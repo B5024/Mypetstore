@@ -1,18 +1,11 @@
-package mypetstore.web.servlet;
-
-<<<<<<< HEAD
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-=======
+package mypetstore.web;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
->>>>>>> 0efe2ce20f90adf547974038b11101025579ce98
+
 import java.io.IOException;
 
 public class MainFormServlet extends HttpServlet {

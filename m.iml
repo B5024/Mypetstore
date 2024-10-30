@@ -1,19 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module version="4">
-  <component name="FacetManager">
-    <facet type="web" name="Web">
-      <configuration>
-        <descriptors>
-          <deploymentDescriptor name="web.xml" url="file://D:/m/web/WEB-INF/web.xml" />
-        </descriptors>
-        <webroots>
-          <root url="file://D:/m/web" relative="/" />
-        </webroots>
-        <sourceRoots>
-          <root url="file://D:/m/src/main/java" />
-          <root url="file://D:/m/src/main/resources" />
-        </sourceRoots>
-      </configuration>
-    </facet>
+  <component name="AdditionalModuleElements">
+    <content url="file://D:/m" dumb="true">
+      <excludeFolder url="file://D:/m/.idea/artifacts" />
+      <excludeFolder url="file://D:/m/.idea/libraries" />
+    </content>
   </component>
 </module>
