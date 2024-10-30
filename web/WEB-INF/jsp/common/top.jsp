@@ -1,6 +1,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<<<<<<< HEAD
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+=======
+>>>>>>> 0efe2ce20f90adf547974038b11101025579ce98
 <!doctype html>
 
 <html lang="en">
@@ -13,6 +16,7 @@
 
 </head>
 <body>
+<<<<<<< HEAD
 
 <div id="Header">
 
@@ -98,3 +102,6 @@
 </div>
 
 <div id="Content"><stripes:messages />
+=======
+    This is top
+>>>>>>> 0efe2ce20f90adf547974038b11101025579ce98

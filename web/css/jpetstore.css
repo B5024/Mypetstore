@@ -8,7 +8,11 @@ body {
 }
 
 pre {
+<<<<<<< HEAD
     font-family: "Courier New", Courier, mono, serif;
+=======
+    font-family: "Courier New", Courier, mono;
+>>>>>>> 0efe2ce20f90adf547974038b11101025579ce98
 
     font-style: normal;
     background-color: #FFFFFF;
