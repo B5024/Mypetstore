@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module version="4">
+  <component name="AdditionalModuleElements">
+    <content url="file://D:/m" dumb="true">
+      <excludeFolder url="file://D:/m/.idea/artifacts" />
+      <excludeFolder url="file://D:/m/.idea/libraries" />
+    </content>
+  </component>
+</module>
