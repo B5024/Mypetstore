@@ -14,11 +14,11 @@ import csu.mypetstoree.persistence.impl.ProductDaoImpl;
 import java.sql.SQLException;
 import java.util.List;
 
-public class CatelogService {
+public class CatalogService {
     private CategoryDao categoryDao;
     private ProductDao productDao;
     private ItemDao itemDao;
-    public CatelogService() {
+    public CatalogService() {
         this.categoryDao = new CategoryDaoImpl();
         this.productDao = new ProductDaoImpl();
         this.itemDao = new ItemDaoImpl();
