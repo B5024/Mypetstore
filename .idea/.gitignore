@@ -7,7 +7,3 @@
 /dataSources/
 /dataSources.local.xml
 
-#idea项目文件
-.idea/
-#web项目target目录
-target/

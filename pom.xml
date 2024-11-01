@@ -17,7 +17,8 @@
     <junit.version>5.9.2</junit.version>
   </properties>
 
-  <dependencies>
+
+    <dependencies>
 <dependency>
       <groupId>jakarta.servlet</groupId>
       <artifactId>jakarta.servlet-api</artifactId>
@@ -35,7 +36,17 @@
         <artifactId>junit-jupiter-engine</artifactId>
         <version>${junit.version}</version>
         <scope>test</scope>
-      </dependency>  </dependencies>
+      </dependency>
+
+      <dependency>
+          <groupId>javax.servlet</groupId>
+          <artifactId>jstl</artifactId>
+          <version>1.2</version>
+      </dependency>
+
+
+
+  </dependencies>
 
   <build>
     <plugins>

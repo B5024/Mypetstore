@@ -3,4 +3,49 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd"
          version="5.0">
+
+
+    <welcome-file-list>
+        <welcome-file>index.html</welcome-file>
+    </welcome-file-list>
+
+    <servlet>
+        <servlet-name>MainFormServlet</servlet-name>
+        <servlet-class>org.example.mypetstore.web.MainFormServlet</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>MainFormServlet</servlet-name>
+        <url-pattern>/main</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>SignOnFormServlet</servlet-name>
+        <servlet-class>org.example.mypetstore.web.SignOnFormServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>SignOnFormServlet</servlet-name>
+        <url-pattern>/signOnForm</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>NewOrderFormServlet</servlet-name>
+        <servlet-class>org.example.mypetstore.web.NewOrderFormServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>NewOrderFormServlet</servlet-name>
+        <url-pattern>/newOrderForm</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>SignOnServlet</servlet-name>
+        <servlet-class>org.example.mypetstore.web.SignOnServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>SignOnServlet</servlet-name>
+        <url-pattern>/signOn</url-pattern>
+    </servlet-mapping>
 </web-app>
