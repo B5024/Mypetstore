@@ -43,4 +43,28 @@
         <servlet-name>UpdateCartServlet</servlet-name>
         <url-pattern>/updateCart</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>CategoryFormServlet</servlet-name>
+        <servlet-class>csu.mypetstoree.web.servlet.CategoryFormServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CategoryFormServlet</servlet-name>
+        <url-pattern>/categoryForm</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>ProductFormServlet</servlet-name>
+        <servlet-class>csu.mypetstoree.web.servlet.ProductFormServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ProductFormServlet</servlet-name>
+        <url-pattern>/product</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>ItemFormServlet</servlet-name>
+        <servlet-class>csu.mypetstoree.web.servlet.ItemFormServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ItemFormServlet</servlet-name>
+        <url-pattern>/item</url-pattern>
+    </servlet-mapping>
 </web-app>
