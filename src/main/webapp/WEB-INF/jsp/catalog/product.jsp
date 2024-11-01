@@ -4,7 +4,7 @@
 <%--             class="org.mybatis.jpetstore.web.actions.CatalogActionBean" />--%>
 
 <div id="BackLink">
-        <a href="">Return to ${sessionScope.product.categoryId}</a>
+        <a href="categoryForm">Return to ${sessionScope.product.categoryId}</a>
 </div>
 
 <div id="Catalog">

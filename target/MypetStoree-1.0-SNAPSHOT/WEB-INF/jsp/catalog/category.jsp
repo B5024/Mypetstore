@@ -15,7 +15,7 @@
         <c:forEach var="product" items="${sessionScope.productList}">
             <tr>
                 <td>
-                <a href="">${product.productId}</a>
+                <a href="productForm">${product.productId}</a>
                 <td>${product.name}</td>
             </tr>
         </c:forEach>

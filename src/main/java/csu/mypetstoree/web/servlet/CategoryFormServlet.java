@@ -24,6 +24,7 @@ public class CategoryFormServlet extends HttpServlet {
         List <Product> productList = catelogService.getProductListByCategory(categoryId);
 
         HttpSession session = req.getSession();
+        session.setAttribute("name", categoryId);
         session.setAttribute("categoryId", categoryId);
         session.setAttribute("productList", productList);
         //找到Id之后应该要查出对应的参数然是送进去category.jsp中

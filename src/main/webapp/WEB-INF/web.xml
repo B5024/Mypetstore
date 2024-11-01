@@ -25,7 +25,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>ProductFormServlet</servlet-name>
-        <url-pattern>/product</url-pattern>
+        <url-pattern>/productForm</url-pattern>
     </servlet-mapping>
     <servlet>
         <servlet-name>ItemFormServlet</servlet-name>
@@ -33,6 +33,6 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>ItemFormServlet</servlet-name>
-        <url-pattern>/item</url-pattern>
+        <url-pattern>/itemForm</url-pattern>
     </servlet-mapping>
 </web-app>
