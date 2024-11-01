@@ -1,8 +1,8 @@
 package csu.mypetstoree.service;
 
-import mypetstore.domain.Account;
+import csu.mypetstoree.domain.Account;
 import csu.mypetstoree.persistence.AccountDao;
-import mypetstore.persistence.impl.AccountDaoImpl;
+import csu.mypetstoree.persistence.impl.AccountDaoImpl;
 
 public class AccountService {
     private AccountDao accountDao;
