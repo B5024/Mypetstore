@@ -1,18 +1,18 @@
 package csu.mypetstoree.web.servlet;
 
+import java.io.IOException;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-import java.io.IOException;
+public class CartFormServlet extends HttpServlet {
+    private static final String CART_FORM = "/WEB-INF/jsp/cart/cart.jsp";
 
-public class ItemFormServlet extends HttpServlet {
-    private static final String ITEM_FORM =" /WEB-INF/jsp/catalog/item.jsp";
+    public CartFormServlet() {
+    }
 
-    @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String itemId = req.getParameter("itemId");
-        req.getRequestDispatcher(ITEM_FORM).forward(req, resp);
+        req.getRequestDispatcher("/WEB-INF/jsp/cart/cart.jsp").forward(req, resp);
     }
 }

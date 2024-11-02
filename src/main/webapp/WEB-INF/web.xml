@@ -11,17 +11,17 @@
 
     <servlet>
         <servlet-name>MainFormServlet</servlet-name>
-        <servlet-class>org.example.mypetstore.web.MainFormServlet</servlet-class>
+        <servlet-class>csu.mypetstoree.web.servlet.MainFormServlet</servlet-class>
     </servlet>
     
     <servlet-mapping>
         <servlet-name>MainFormServlet</servlet-name>
-        <url-pattern>/main</url-pattern>
+        <url-pattern>/mainForm</url-pattern>
     </servlet-mapping>
 
     <servlet>
         <servlet-name>SignOnFormServlet</servlet-name>
-        <servlet-class>org.example.mypetstore.web.SignOnFormServlet</servlet-class>
+        <servlet-class>csu.mypetstoree.web.servlet.SignOnFormServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -31,7 +31,7 @@
 
     <servlet>
         <servlet-name>NewOrderFormServlet</servlet-name>
-        <servlet-class>org.example.mypetstore.web.NewOrderFormServlet</servlet-class>
+        <servlet-class>csu.mypetstoree.web.servlet.NewOrderFormServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -41,9 +41,8 @@
 
     <servlet>
         <servlet-name>SignOnServlet</servlet-name>
-        <servlet-class>org.example.mypetstore.web.SignOnServlet</servlet-class>
+        <servlet-class>csu.mypetstoree.web.servlet.SignOnServlet</servlet-class>
     </servlet>
-
     <servlet-mapping>
         <servlet-name>SignOnServlet</servlet-name>
         <url-pattern>/signOn</url-pattern>
@@ -71,5 +70,23 @@
     <servlet-mapping>
         <servlet-name>ItemFormServlet</servlet-name>
         <url-pattern>/item</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>RegisterFormServlet</servlet-name>
+        <servlet-class>csu.mypetstoree.web.servlet.RegisterFormServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RegisterFormServlet</servlet-name>
+        <url-pattern>/registerForm</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>RegisterServlet</servlet-name>
+        <servlet-class>csu.mypetstoree.web.servlet.RegisterServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RegisterServlet</servlet-name>
+        <url-pattern>/register</url-pattern>
     </servlet-mapping>
 </web-app>

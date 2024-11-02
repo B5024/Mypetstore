@@ -20,17 +20,11 @@ public class ItemDaoImpl implements ItemDao {
 
     public static final String GET_INVENTORY_QUANTITY ="SELECT QTY AS QUANTITY FROM INVENTORY WHERE ITEMID = ?";
 
-    public static final String GET_ITEM =
-            "SELECT I.ITEMID,LISTPRICE,UNITCOST,SUPPLIER AS supplierId,I.PRODUCTID AS product.productId,NAME AS product.name," +
-                    "DESCN AS product.description,CATEGORY AS product.categoryId,STATUS," +
-                    "ATTR1 AS attribute1,ATTR2 AS attribute2,ATTR3 AS attribute3,ATTR4 AS attribute4,ATTR5 AS attribute5" +
-                    "FROM ITEM I, PRODUCT P WHERE P.PRODUCTID = I.PRODUCTID AND I.PRODUCTID = ?";;
+    public static final String GET_ITEM = "SELECT I.ITEMID,LISTPRICE,UNITCOST,SUPPLIER AS supplierId,I.PRODUCTID AS productId,NAME AS productName,DESCN AS productDescription,CATEGORY AS CategoryId,STATUS,ATTR1 AS attribute1,ATTR2 AS attribute2,ATTR3 AS attribute3,ATTR4 AS attribute4,ATTR5 AS attribute5,QTY AS quantity from ITEM I, INVENTORY V, PRODUCT P where P.PRODUCTID = I.PRODUCTID and I.ITEMID = V.ITEMID and I.ITEMID=?";
 
-    public static final String GET_ITEMLIST_BY_PRODUCT =
-            "SELECT I.ITEMID,LISTPRICE,UNITCOST,SUPPLIER AS supplierId,I.PRODUCTID AS product.productId,NAME AS product.name," +
-            "DESCN AS product.description,CATEGORY AS product.categoryId,STATUS," +
-            "ATTR1 AS attribute1,ATTR2 AS attribute2,ATTR3 AS attribute3,ATTR4 AS attribute4,ATTR5 AS attribute5" +
-            "FROM ITEM I, PRODUCT P WHERE P.PRODUCTID = I.PRODUCTID AND I.PRODUCTID = ?";;
+    public static final String GET_ITEMLIST_BY_PRODUCT =  "SELECT I.ITEMID,LISTPRICE,UNITCOST,SUPPLIER AS supplierId,I.PRODUCTID AS productId,NAME AS productName,DESCN AS productDescription,CATEGORY AS categoryId,STATUS,ATTR1 AS attribute1,ATTR2 AS attribute2,ATTR3 AS attribute3,ATTR4 AS attribute4,ATTR5 AS attribute5 FROM ITEM I, PRODUCT P WHERE P.PRODUCTID = I.PRODUCTID AND I.PRODUCTID = ?";
+
+
 
     @Override
     public void updateInventoryQuantity(Map<String, Object> param) {
@@ -71,16 +65,8 @@ public class ItemDaoImpl implements ItemDao {
         return result;
     }
 
-    @Override
-    public List<Item> getItemListByProduct(String productId) {
-        List<Item> itemList = new ArrayList<Item>();
-        try {
-            Connection connection = DBUtil.getConnection();
-            PreparedStatement ps = connection.prepareStatement(GET_ITEMLIST_BY_PRODUCT);
-            ps.setString(1, productId);
-            ResultSet resultSet = ps.executeQuery();
-            while (resultSet.next()) {
-//                Item item = new Item();
+
+    //                Item item = new Item();
 //                item.setItemId(resultSet.getString(1));
 //                item.setProductId(resultSet.getString(2));
 //                item.setListPrice(resultSet.getBigDecimal(3));
@@ -94,6 +80,16 @@ public class ItemDaoImpl implements ItemDao {
 //                item.setAttribute4(resultSet.getString(10));
 //                item.setAttribute5(resultSet.getString(11));
 //                itemList.add(item);
+    @Override
+    public List<Item> getItemListByProduct(String productId) {
+        List<Item> itemList = new ArrayList<Item>();
+        try {
+            Connection connection = DBUtil.getConnection();
+            PreparedStatement pStatement = connection
+                    .prepareStatement(GET_ITEMLIST_BY_PRODUCT);
+            pStatement.setString(1, productId);
+            ResultSet resultSet = pStatement.executeQuery();
+            while (resultSet.next()) {
                 Item item = new Item();
                 item.setItemId(resultSet.getString(1));
                 item.setListPrice(resultSet.getBigDecimal(2));
@@ -114,11 +110,12 @@ public class ItemDaoImpl implements ItemDao {
                 itemList.add(item);
             }
             DBUtil.closeResultSet(resultSet);
-            DBUtil.closePreparedStatement(ps);
-            DBUtil.closeConnection(connection);
-        }catch (SQLException e){
+            DBUtil.closePreparedStatement(pStatement);
+            DBUtil.closeResultSet(resultSet);
+        } catch (Exception e) {
             e.printStackTrace();
         }
+
         return itemList;
     }
 
