@@ -1,114 +1,305 @@
-package csu.mypetstoree.persistence.impl;
+package csu.mypetstoree.persistence;
 
 import csu.mypetstoree.domain.Account;
-import csu.mypetstoree.persistence.AccountDao;
 import csu.mypetstoree.persistence.DBUtil;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-public class AccountDaoImpl implements AccountDao {
+public class AccountDao {
 
-    private static final String GET_ACCOUNT_BY_USERNAME_AND_PASSWORD = "SELECT " +
-            "SIGNON.USERNAME," +
-            "ACCOUNT.EMAIL,ACCOUNT.FIRSTNAME,ACCOUNT.LASTNAME,ACCOUNT.STATUS," +
-            "ACCOUNT.ADDR1 AS address1,ACCOUNT.ADDR2 AS address2," +
-            "ACCOUNT.CITY,ACCOUNT.STATE,ACCOUNT.ZIP,ACCOUNT.COUNTRY,ACCOUNT.PHONE," +
-            "PROFILE.LANGPREF AS languagePreference,PROFILE.FAVCATEGORY AS favouriteCategoryId," +
-            "PROFILE.MYLISTOPT AS listOption,PROFILE.BANNEROPT AS bannerOption," +
-            "BANNERDATA.BANNERNAME " +
-            "FROM ACCOUNT, PROFILE, SIGNON, BANNERDATA " +
-            "WHERE ACCOUNT.USERID = ? AND SIGNON.PASSWORD = ? " +
-            "AND SIGNON.USERNAME = ACCOUNT.USERID " +
-            "AND PROFILE.USERID = ACCOUNT.USERID " +
-            "AND PROFILE.FAVCATEGORY = BANNERDATA.FAVCATEGORY";
-
-    @Override
-    public Account getAccountByUsername(String username) {
-        return null;
-    }
-
-    @Override
-    public Account getAccountByUsernameAndPassword(Account account) {
-        Account accountResult = null;
+    public static Account getAccountByUsername(String username){
+        Account  ac = null;
         try {
             Connection connection = DBUtil.getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement(GET_ACCOUNT_BY_USERNAME_AND_PASSWORD);
-            preparedStatement.setString(1, account.getUsername());
-            preparedStatement.setString(2, account.getPassword());
-            ResultSet resultSet = preparedStatement.executeQuery();
-            if (resultSet.next()){
-                accountResult = this.resultSetToAccount(resultSet);
+            PreparedStatement statement = connection.prepareStatement(GET_ACCOUNT_BY_USERNAME);
+            statement.setString(1, username);
+            ResultSet resultSet = statement.executeQuery();
+            if(resultSet.next()){
+                ac = new Account();
+                ac.setUsername(resultSet.getString("username"));
+                ac.setEmail(resultSet.getString("email"));
+                ac.setFirstName(resultSet.getString("firstname"));
+                ac.setLastName(resultSet.getString("lastname"));
+                ac.setStatus(resultSet.getString("status"));
+                ac.setAddress1(resultSet.getString("address1"));
+                ac.setAddress2(resultSet.getString("address2"));
+                ac.setCity(resultSet.getString("city"));
+                ac.setState(resultSet.getString("state"));
+                ac.setZip(resultSet.getString("zip"));
+                ac.setCountry(resultSet.getString("country"));
+                ac.setPhone(resultSet.getString("phone"));
+                ac.setLanguagePreference(resultSet.getString("languagePreference"));
+                ac.setFavouriteCategoryId(resultSet.getString("favouriteCategoryId"));
+                ac.setListOption(resultSet.getInt("listOption") == 0);
+                ac.setBannerOption(resultSet.getInt("bannerOption") == 0);
+                ac.setBannerName(resultSet.getString("bannerName"));
             }
             DBUtil.closeResultSet(resultSet);
-            DBUtil.closePreparedStatement(preparedStatement);
+            DBUtil.closePreparedStatement(statement);
             DBUtil.closeConnection(connection);
         }catch (Exception e){
             e.printStackTrace();
         }
-        return accountResult;
-    }
+        return ac;
+    };
 
-    private Account resultSetToAccount(ResultSet resultSet) throws Exception{
-        Account account = new Account();
-        account.setUsername(resultSet.getString("username"));
-//        account.setPassword(resultSet.getString("password"));
-        account.setEmail(resultSet.getString("email"));
-        account.setFirstName(resultSet.getString("firstName"));
-        account.setLastName(resultSet.getString("lastName"));
-        account.setStatus(resultSet.getString("status"));
-        account.setAddress1(resultSet.getString("address1"));
-        account.setAddress2(resultSet.getString("address2"));
-        account.setCity(resultSet.getString("city"));
-        account.setState(resultSet.getString("state"));
-        account.setZip(resultSet.getString("zip"));
-        account.setCountry(resultSet.getString("country"));
-        account.setPhone(resultSet.getString("phone"));
-        account.setFavouriteCategoryId(resultSet.getString("favouriteCategoryId"));
-        account.setLanguagePreference(resultSet.getString("languagePreference"));
-        account.setListOption(resultSet.getInt("listOption") == 1);
-        account.setBannerOption(resultSet.getInt("bannerOption") == 1);
-        account.setBannerName(resultSet.getString("bannerName"));
-        return account;
-    }
+    public static Account getAccountByUsernameAndPassword(Account account){
+        Account  ac = null;
+        try {
+            Connection connection = DBUtil.getConnection();
+            PreparedStatement statement = connection.prepareStatement(GET_ACCOUNT_BY_USERNAME_AND_PASSWORD);
+            statement.setString(1, account.getUsername());
+            statement.setString(2, account.getPassword());
+             ResultSet resultSet = statement.executeQuery();
+             if(resultSet.next()){
+                 ac = new Account();
+                 ac.setUsername(resultSet.getString("username"));
+                 ac.setEmail(resultSet.getString("email"));
+                 ac.setFirstName(resultSet.getString("firstname"));
+                 ac.setLastName(resultSet.getString("lastname"));
+                 ac.setStatus(resultSet.getString("status"));
+                 ac.setAddress1(resultSet.getString("address1"));
+                 ac.setAddress2(resultSet.getString("address2"));
+                 ac.setCity(resultSet.getString("city"));
+                 ac.setState(resultSet.getString("state"));
+                 ac.setZip(resultSet.getString("zip"));
+                 ac.setCountry(resultSet.getString("country"));
+                 ac.setPhone(resultSet.getString("phone"));
+                 ac.setLanguagePreference(resultSet.getString("languagePreference"));
+                 ac.setFavouriteCategoryId(resultSet.getString("favouriteCategoryId"));
+                 ac.setListOption(resultSet.getInt("listOption") == 0);
+                 ac.setBannerOption(resultSet.getInt("bannerOption") == 0);
+                 ac.setBannerName(resultSet.getString("bannerName"));
+             }
+            DBUtil.closeResultSet(resultSet);
+            DBUtil.closePreparedStatement(statement);
+            DBUtil.closeConnection(connection);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return ac;
+    };
 
-    @Override
-    public void insertAccount(Account account) {
+    public static void insertAccount(Account account){
+        try {
+            Connection connection = DBUtil.getConnection();
+            PreparedStatement statement = connection.prepareStatement(INSERT_ACCOUNT);
+            statement.setString(1, account.getEmail());
+            statement.setString(2, account.getFirstName());
+            statement.setString(3, account.getLastName());
+            statement.setString(4, account.getStatus());
+            statement.setString(5, account.getAddress1());
+            statement.setString(6, account.getAddress2());
+            statement.setString(7, account.getCity());
+            statement.setString(8, account.getState());
+            statement.setString(9, account.getZip());
+            statement.setString(10, account.getCountry());
+            statement.setString(11, account.getPhone());
+            statement.setString(12, account.getUsername());
+            int rows = statement.executeUpdate();
+            if(rows == 1){
+                System.out.println("Account Insert succeed");
+            }else {
+                System.out.println("Account Insert fail");
+            }
+            DBUtil.closePreparedStatement(statement);
+            DBUtil.closeConnection(connection);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    };
 
-    }
+    public static void insertProfile(Account account){
+        try {
+            Connection connection = DBUtil.getConnection();
+            PreparedStatement statement = connection.prepareStatement(INSERT_PROFILE);
+            statement.setString(1, account.getLanguagePreference());
+            statement.setString(2, account.getFavouriteCategoryId());
+            statement.setString(3, account.getUsername());
+            int rows = statement.executeUpdate();
+            if(rows == 1){
+                System.out.println("Profile Insert succeed");
+            }else {
+                System.out.println("Profile Insert fail");
+            }
+            DBUtil.closePreparedStatement(statement);
+            DBUtil.closeConnection(connection);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    };
 
-    @Override
-    public void insertProfile(Account account) {
+    public static void insertSignon(Account account){
+        try {
+            Connection connection = DBUtil.getConnection();
+            PreparedStatement statement = connection.prepareStatement(INSERT_SIGN_ON);
+            statement.setString(1, account.getPassword());
+            statement.setString(2, account.getUsername());
+            int rows = statement.executeUpdate();
+            if(rows == 1){
+                System.out.println("SignOn Insert succeed");
+            }else {
+                System.out.println("SignOn Insert fail");
+            }
+            DBUtil.closePreparedStatement(statement);
+            DBUtil.closeConnection(connection);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    };
 
-    }
+    public static void updateAccount(Account account){
+        try {
+            Connection connection = DBUtil.getConnection();
+            PreparedStatement statement = connection.prepareStatement(UPDATE_ACCOUNT);
+            statement.setString(1, account.getEmail());
+            statement.setString(2, account.getFirstName());
+            statement.setString(3, account.getLastName());
+            statement.setString(4, account.getStatus());
+            statement.setString(5, account.getAddress1());
+            statement.setString(6, account.getAddress2());
+            statement.setString(7, account.getCity());
+            statement.setString(8, account.getState());
+            statement.setString(9, account.getZip());
+            statement.setString(10, account.getCountry());
+            statement.setString(11, account.getPhone());
+            statement.setString(12, account.getUsername());
+            int rows = statement.executeUpdate();
+            if(rows == 1){
+                System.out.println("Account update succeed");
+            }else {
+                System.out.println("Account update fail");
+            }
+            DBUtil.closePreparedStatement(statement);
+            DBUtil.closeConnection(connection);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    };
 
-    @Override
-    public void insertSignon(Account account) {
+    public static void updateProfile(Account account){
+        try {
+            Connection connection = DBUtil.getConnection();
+            PreparedStatement statement = connection.prepareStatement(UPDATE_PROFILE);
+            statement.setString(1, account.getLanguagePreference());
+            statement.setString(2, account.getFavouriteCategoryId());
+            statement.setString(3, account.getUsername());
+            int rows = statement.executeUpdate();
+            if(rows == 1){
+                System.out.println("Profile update succeed");
+            }else {
+                System.out.println("Profile update fail");
+            }
+            DBUtil.closePreparedStatement(statement);
+            DBUtil.closeConnection(connection);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    };
 
-    }
+    public static void updateSignon(Account account){
+        try {
+            Connection connection = DBUtil.getConnection();
+            PreparedStatement statement = connection.prepareStatement(UPDATE_SIGN_ON);
+            statement.setString(1, account.getPassword());
+            statement.setString(2, account.getUsername());
+            int rows = statement.executeUpdate();
+            if(rows == 1){
+                System.out.println("SignOn update succeed");
+            }else {
+                System.out.println("SignOn update fail");
+            }
+            DBUtil.closePreparedStatement(statement);
+            DBUtil.closeConnection(connection);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    };
 
-    @Override
-    public void updateAccount(Account account) {
 
-    }
+    private static final String UPDATE_SIGN_ON = "UPDATE SIGNON SET PASSWORD = ?\n" +
+            "    WHERE USERNAME = ?";
 
-    @Override
-    public void updateProfile(Account account) {
+    private static final String UPDATE_PROFILE = "UPDATE PROFILE SET\n" +
+            "      LANGPREF = ?,\n" +
+            "      FAVCATEGORY = ?\n" +
+            "    WHERE USERID = ?";
 
-    }
+    private static final String UPDATE_ACCOUNT = "UPDATE ACCOUNT SET\n" +
+            "      EMAIL = ?,\n" +
+            "      FIRSTNAME = ?,\n" +
+            "      LASTNAME = ?,\n" +
+            "      STATUS = ?,\n" +
+            "      ADDR1 = ?,\n" +
+            "      ADDR2 = ?,\n" +
+            "      CITY = ?,\n" +
+            "      STATE = ?,\n" +
+            "      ZIP = ?,\n" +
+            "      COUNTRY = ?,\n" +
+            "      PHONE = ?\n" +
+            "    WHERE USERID = ?";
 
-    @Override
-    public void updateSignon(Account account) {
+    private static final String INSERT_SIGN_ON = "INSERT INTO SIGNON (PASSWORD,USERNAME)\n" +
+            "    VALUES (?, ?)";
 
-    }
+    private static final String INSERT_PROFILE = "INSERT INTO PROFILE (LANGPREF, FAVCATEGORY, USERID)\n" +
+            "    VALUES (?, ?, ?)";
 
-//    public static void main(String[] args) {
-//        AccountDao accountDao = new AccountDaoImpl();
-//        Account account = new Account();
-//        account.setUsername("j2ee");
-//        account.setPassword("jee");
-//        Account result = accountDao.getAccountByUsernameAndPassword(account);
-//        System.out.println("success");
-//    }
+    private static final String GET_ACCOUNT_BY_USERNAME_AND_PASSWORD = "SELECT\n" +
+            "      SIGNON.USERNAME,\n" +
+            "      ACCOUNT.EMAIL,\n" +
+            "      ACCOUNT.FIRSTNAME,\n" +
+            "      ACCOUNT.LASTNAME,\n" +
+            "      ACCOUNT.STATUS,\n" +
+            "      ACCOUNT.ADDR1 AS address1,\n" +
+            "      ACCOUNT.ADDR2 AS address2,\n" +
+            "      ACCOUNT.CITY,\n" +
+            "      ACCOUNT.STATE,\n" +
+            "      ACCOUNT.ZIP,\n" +
+            "      ACCOUNT.COUNTRY,\n" +
+            "      ACCOUNT.PHONE,\n" +
+            "      PROFILE.LANGPREF AS languagePreference,\n" +
+            "      PROFILE.FAVCATEGORY AS favouriteCategoryId,\n" +
+            "      PROFILE.MYLISTOPT AS listOption,\n" +
+            "      PROFILE.BANNEROPT AS bannerOption,\n" +
+            "      BANNERDATA.BANNERNAME\n" +
+            "    FROM ACCOUNT, PROFILE, SIGNON, BANNERDATA\n" +
+            "    WHERE ACCOUNT.USERID = ?\n" +
+            "      AND SIGNON.PASSWORD = ?\n" +
+            "      AND SIGNON.USERNAME = ACCOUNT.USERID\n" +
+            "      AND PROFILE.USERID = ACCOUNT.USERID\n" +
+            "      AND PROFILE.FAVCATEGORY = BANNERDATA.FAVCATEGORY";
+
+    private static final String GET_ACCOUNT_BY_USERNAME = "SELECT\n" +
+            "          SIGNON.USERNAME,\n" +
+            "          ACCOUNT.EMAIL,\n" +
+            "          ACCOUNT.FIRSTNAME,\n" +
+            "          ACCOUNT.LASTNAME,\n" +
+            "          ACCOUNT.STATUS,\n" +
+            "          ACCOUNT.ADDR1 AS address1,\n" +
+            "          ACCOUNT.ADDR2 AS address2,\n" +
+            "          ACCOUNT.CITY,\n" +
+            "          ACCOUNT.STATE,\n" +
+            "          ACCOUNT.ZIP,\n" +
+            "          ACCOUNT.COUNTRY,\n" +
+            "          ACCOUNT.PHONE,\n" +
+            "          PROFILE.LANGPREF AS languagePreference,\n" +
+            "          PROFILE.FAVCATEGORY AS favouriteCategoryId,\n" +
+            "          PROFILE.MYLISTOPT AS listOption,\n" +
+            "          PROFILE.BANNEROPT AS bannerOption,\n" +
+            "          BANNERDATA.BANNERNAME\n" +
+            "    FROM ACCOUNT, PROFILE, SIGNON, BANNERDATA\n" +
+            "    WHERE ACCOUNT.USERID = ?\n" +
+            "      AND SIGNON.USERNAME = ACCOUNT.USERID\n" +
+            "      AND PROFILE.USERID = ACCOUNT.USERID\n" +
+            "      AND PROFILE.FAVCATEGORY = BANNERDATA.FAVCATEGORY";
+
+    private static final String INSERT_ACCOUNT = "INSERT INTO ACCOUNT\n" +
+            "      (EMAIL, FIRSTNAME, LASTNAME, STATUS, ADDR1, ADDR2, CITY, STATE, ZIP, COUNTRY, PHONE, USERID)\n" +
+            "    VALUES\n" +
+            "      (?, ?, ?, ?, ?,  ?, ?, ?, ?, ?, ?, ?)";
+
+
 }
