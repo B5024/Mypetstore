@@ -4,7 +4,7 @@
 <%--             class="org.mybatis.jpetstore.web.actions.CatalogActionBean" />--%>
 
 <div id="BackLink">
-        <a href="categoryForm">Return to ${sessionScope.product.categoryId}</a>
+    <a href="categoryForm?categoryId=${sessionScope.category.categoryId}">Return to ${sessionScope.category.name}</a>
 </div>
 
 <div id="Catalog">
@@ -22,20 +22,16 @@
         <c:forEach var="item" items="${sessionScope.itemList}">
             <tr>
                 <td>
-                    <a href="">${item.itemId}</a>
+                    <a href="itemForm?itemId=${item.itemId}">${item.itemId}</a>
                 </td>
                 <td>${item.product.productId}</td>
                 <td>${item.attribute1} ${item.attribute2} ${item.attribute3}
                         ${item.attribute4} ${item.attribute5} ${sessionScope.product.name}</td>
                 <td><fmt:formatNumber value="${item.listPrice}"
                                       pattern="$#,##0.00" /></td>
-                <td><a href="">Add to Cart</a></td>
+                <td><a href="addItemToCart?workingItemId=${item.itemId}" class="Button" >Add to Cart</a></td>
             </tr>
         </c:forEach>
-        <tr>
-            <td>
-            </td>
-        </tr>
     </table>
 
 </div>

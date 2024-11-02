@@ -1,7 +1,7 @@
 <%@ include file="../common/top.jsp"%>
 
 <div id="BackLink">
-    <a href="productForm">Return to ${sessionScope.product.productId}</a>
+    <a href="productForm?productId=${sessionScope.product.productId}">Return to ${sessionScope.product.productId}</a>
 </div>
 
 <div id="Catalog">
@@ -35,7 +35,7 @@
         </tr>
 
         <tr>
-            <td><a href="#">Add to Cart</a> </td>
+            <td><a href="addItemToCart?workingItemId=${sessionScope.item.itemId}" class="Button">Add to Cart</a> </td>
         </tr>
     </table>
 

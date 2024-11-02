@@ -34,6 +34,6 @@ public class AddItemToCartServlet extends HttpServlet {
         }
 
         session.setAttribute("cart", cart);
-        req.getRequestDispatcher("/WEB-INF/jsp/cart/cart.jsp").forward(req, resp);
+        req.getRequestDispatcher(CART_FORM).forward(req, resp);
     }
 }
