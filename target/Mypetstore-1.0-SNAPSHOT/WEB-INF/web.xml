@@ -47,6 +47,16 @@
         <servlet-name>SignOnServlet</servlet-name>
         <url-pattern>/signOn</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>SignOutServlet</servlet-name>
+        <servlet-class>csu.mypetstoree.web.servlet.SignOutServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SignOutServlet</servlet-name>
+        <url-pattern>/signOut</url-pattern>
+    </servlet-mapping>
+
     <servlet>
         <servlet-name>CategoryFormServlet</servlet-name>
         <servlet-class>csu.mypetstoree.web.servlet.CategoryFormServlet</servlet-class>
@@ -88,5 +98,92 @@
     <servlet-mapping>
         <servlet-name>RegisterServlet</servlet-name>
         <url-pattern>/register</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>MailcodeFormServlet</servlet-name>
+        <servlet-class>csu.mypetstoree.web.servlet.MailcodeFormServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>MailcodeFormServlet</servlet-name>
+        <url-pattern>/mailcodeForm</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>MailcodeServlet</servlet-name>
+        <servlet-class>csu.mypetstoree.web.servlet.MailcodeServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>MailcodeServlet</servlet-name>
+        <url-pattern>/mailcode</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>FindPasswordFormServlet</servlet-name>
+        <servlet-class>csu.mypetstoree.web.servlet.FindPasswordFormServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>FindPasswordFormServlet</servlet-name>
+        <url-pattern>/findPasswordForm</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>FindPasswordServlet</servlet-name>
+        <servlet-class>csu.mypetstoree.web.servlet.FindPasswordServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>FindPasswordServlet</servlet-name>
+        <url-pattern>/findPassword</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>EditAccountFormServlet</servlet-name>
+        <servlet-class>csu.mypetstoree.web.servlet.EditAccountFormServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>EditAccountFormServlet</servlet-name>
+        <url-pattern>/editAccountForm</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>EditAccountServlet</servlet-name>
+        <servlet-class>csu.mypetstoree.web.servlet.EditAccountServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>EditAccountServlet</servlet-name>
+        <url-pattern>/editAccount</url-pattern>
+    </servlet-mapping>
+
+
+
+    <servlet>
+        <servlet-name>AddItemToCartServlet</servlet-name>
+        <servlet-class>csu.mypetstoree.web.servlet.AddItemToCartServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AddItemToCartServlet</servlet-name>
+        <url-pattern>/addItemToCart</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>CartFormServlet</servlet-name>
+        <servlet-class>csu.mypetstoree.web.servlet.CartFormServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CartFormServlet</servlet-name>
+        <url-pattern>/cartForm</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>RemoveCartItemServlet</servlet-name>
+        <servlet-class>csu.mypetstoree.web.servlet.RemoveCartItemServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RemoveCartItemServlet</servlet-name>
+        <url-pattern>/removeCartItem</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>UpdateCartServlet</servlet-name>
+        <servlet-class>csu.mypetstoree.web.servlet.UpdateCartServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UpdateCartServlet</servlet-name>
+        <url-pattern>/updateCart</url-pattern>
     </servlet-mapping>
 </web-app>

@@ -20,6 +20,7 @@ public class RegisterServlet extends HttpServlet {
     private String password;
     private String confirmPassword;
     private String email;
+    private String emailcode;
     private String phone;
     private String addr1;
     private String addr2;
@@ -29,16 +30,21 @@ public class RegisterServlet extends HttpServlet {
     private String country;
     private String Msg;
 
+    private HttpSession session;
+
 
     @Override
     public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+        session = req.getSession();
 
         this.username = req.getParameter("username");
         this.password = req.getParameter("password");
         this.confirmPassword = req.getParameter("confirmPassword");
         this.firstname = req.getParameter("firstname");
         this.lastname = req.getParameter("lastname");
-        this.email = req.getParameter("email");
+        this.email = session.getAttribute("email").toString();
+        this.emailcode = req.getParameter("emailcode");
         this.addr1 = req.getParameter("addr1");
         this.addr2 = req.getParameter("addr2");
         this.city = req.getParameter("city");
@@ -68,12 +74,8 @@ public class RegisterServlet extends HttpServlet {
             Msg = "Last name is required";
             return false;
         }
-        if (email == null || email.isEmpty()) {
-            Msg = "Email is required";
-            return false;
-        }
-        if (!isValidEmail(email)) {
-            Msg = "Invalid email format";
+        if (emailcode.isEmpty() || !emailcode.equals(session.getAttribute("emailcode").toString())) {
+            Msg = "Email Code does not match";
             return false;
         }
         if (username == null || username.isEmpty()) {

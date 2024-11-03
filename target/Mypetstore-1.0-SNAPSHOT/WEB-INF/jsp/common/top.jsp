@@ -24,15 +24,21 @@
         </div>
         <div id="Menu">
             <div id="MenuContents">
-                    <a href="#"><img align="middle" name="img_cart" src="images/cart.gif" /></a>
+                <a href="cartForm"><img align="middle" name="img_cart" src="images/cart.gif" /></a>
+                <img align="middle" src="images/separator.gif" />
+                <c:if test="${sessionScope.loginAccount == null}">
+                    <a href="signOnForm">Sign In</a>
                     <img align="middle" src="images/separator.gif" />
-                        <a href="#">Sign In</a>
-                        <a href="#">Sign Out</a>
+                </c:if>
+
+                <c:if test="${sessionScope.loginAccount != null}">
+                    <a href="signOut">Sign Out</a>
                     <img align="middle" src="images/separator.gif" />
-                        <a href="#">My Account</a>
+                    <a href="editAccountForm">My Account</a>
                     <img align="middle" src="images/separator.gif" />
-                        <a href="help.html">?</a>
-                </div>
+                </c:if>
+                <a href="help.html">?</a>
+            </div>
         </div>
 
         <div id="Search">

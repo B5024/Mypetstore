@@ -7,21 +7,65 @@
         <c:if test="${requestScope.registerMsg != null}">
             <p> <font color="red">${requestScope.registerMsg}</font> </p>
         </c:if>
-        <p>
-            First Name:<input type="text" name="firstname" required> <br />
-            Last Name:<input type="text" name="lastname" required> <br />
-            Email:<input type="email" name="email" required> <br />
-            Username:<input type="text" name="username" required> <br />
-            Password:<input type="password" name="password" required> <br />
-            Confirm Password:<input type="password" name="confirmPassword" required> <br />
-            Address Line 1:<input type="text" name="addr1" required> <br />
-            Address Line 2:<input type="text" name="addr2"> <br />
-            City:<input type="text" name="city" required> <br />
-            State:<input type="text" name="state" required> <br />
-            Zip Code:<input type="text" name="zip" required> <br />
-            Country:<input type="text" name="country" required> <br />
-            Phone:<input type="tel" name="phone" required>
-        </p>
+        <table>
+            <tr>
+                <td>First Name:</td>
+                <td><input type="text" name="firstname" required></td>
+            </tr>
+            <tr>
+                <td>Last Name:</td>
+                <td><input type="text" name="lastname" required></td>
+            </tr>
+            <tr>
+                <td>Email:</td>
+                <td><c:out value="${sessionScope.email}" /></td>
+            </tr>
+            <tr>
+                <td>Email Code:</td>
+                <td><input type="text" name="emailcode" required></td>
+            </tr>
+            <tr>
+                <td>Username:</td>
+                <td><input type="text" name="username" required></td>
+            </tr>
+            <tr>
+                <td>Password:</td>
+                <td><input type="password" name="password" required></td>
+            </tr>
+            <tr>
+                <td>Confirm Password:</td>
+                <td><input type="password" name="confirmPassword" required></td>
+            </tr>
+            <tr>
+                <td>Address Line 1:</td>
+                <td><input type="text" name="addr1" required></td>
+            </tr>
+            <tr>
+                <td>Address Line 2:</td>
+                <td><input type="text" name="addr2"></td>
+            </tr>
+            <tr>
+                <td>City:</td>
+                <td><input type="text" name="city" required></td>
+            </tr>
+            <tr>
+                <td>State:</td>
+                <td><input type="text" name="state" required></td>
+            </tr>
+            <tr>
+                <td>Zip Code:</td>
+                <td><input type="text" name="zip" required></td>
+            </tr>
+            <tr>
+                <td>Country:</td>
+                <td><input type="text" name="country" required></td>
+            </tr>
+            <tr>
+                <td>Phone:</td>
+                <td><input type="tel" name="phone" required></td>
+            </tr>
+        </table>
+
         <input type="submit" name="Register" value="Register">
     </form>
     Already have an account?

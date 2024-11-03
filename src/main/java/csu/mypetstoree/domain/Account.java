@@ -1,6 +1,10 @@
-package csu.mypetstore.domain;
+package csu.mypetstoree.domain;
 
-public class Account {
+import java.io.Serializable;
+
+public class Account implements Serializable {
+
+    private static final long serialVersionUID = 8751282105532159742L;
 
     private String username;
     private String password;
@@ -27,6 +31,53 @@ public class Account {
         this.username = username;
         this.password = password;
     }
+
+
+    public Account(String username,String password,String email,String firstName,String lastName,
+                   String address1,String address2,String city,String state,String zip,String country,
+                   String phone){
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.address1 = address1;
+        this.address2 = address2;
+        this.city = city;
+        this.state = state;
+        this.zip = zip;
+        this.country = country;
+        this.phone = phone;
+        this.status = "OK";
+        this.favouriteCategoryId = "CATS";
+        this.languagePreference = "english";
+        this.listOption = false;
+        this.bannerOption = false;
+    }
+
+    public Account(String username,String password,String email,String firstName,String lastName,
+                   String address1,String address2,String city,String state,String zip,String country,
+                   String phone,String favouriteCategoryId,String languagePreference,boolean listOption,
+                   boolean bannerOption){
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.address1 = address1;
+        this.address2 = address2;
+        this.city = city;
+        this.state = state;
+        this.zip = zip;
+        this.country = country;
+        this.phone = phone;
+        this.status = "OK";
+        this.favouriteCategoryId = favouriteCategoryId;
+        this.languagePreference = languagePreference;
+        this.listOption = listOption;
+        this.bannerOption = bannerOption;
+    }
+
 
     public String getUsername() {
         return username;
