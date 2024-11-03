@@ -11,5 +11,7 @@ public interface ProductDao {
 
     List<Product> searchProductList(String keywords);
 
+    Product getProductByName(String name);
+
 
 }

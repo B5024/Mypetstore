@@ -40,6 +40,10 @@ public class CatalogService {
         return productDao.getProductListByCategory(categoryId);
     }
 
+    public Product getProductByName(String name){
+        return productDao.getProductByName(name);
+    }
+
     // TODO enable using more than one keyword
     public List<Product> searchProductList(String keyword) {
         return productDao.searchProductList("%" + keyword.toLowerCase() + "%");
