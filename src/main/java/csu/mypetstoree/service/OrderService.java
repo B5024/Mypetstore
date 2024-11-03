@@ -7,9 +7,11 @@ import csu.mypetstoree.domain.Sequence;
 import csu.mypetstoree.persistence.ItemDao;
 import csu.mypetstoree.persistence.LineItemDao;
 import csu.mypetstoree.persistence.OrderDao;
+import csu.mypetstoree.persistence.SequenceDao;
 import csu.mypetstoree.persistence.impl.ItemDaoImpl;
 import csu.mypetstoree.persistence.impl.LineItemDaoImpl;
 import csu.mypetstoree.persistence.impl.OrderDaoImpl;
+import csu.mypetstoree.persistence.impl.SequenceDaoImpl;
 
 import java.util.HashMap;
 import java.util.List;
@@ -17,14 +19,20 @@ import java.util.Map;
 
 public class OrderService {
 
-    private ItemDao itemMapper;
+    private ItemDao itemDao;
 
-    private OrderDao orderMapper;
+    private OrderDao orderDao;
 
-    private SequenceMapper sequenceMapper;
+    private SequenceDao sequenceDao;
 
-    private LineItemDao lineItemMapper;
+    private LineItemDao lineItemDao;
 
+    public OrderService(){
+        itemDao = new ItemDaoImpl();
+        orderDao = new OrderDaoImpl();
+        sequenceDao = new SequenceDaoImpl();
+        lineItemDao = new LineItemDaoImpl();
+    }
 
     public void insertOrder(Order order) {
         order.setOrderId(getNextId("ordernum"));
@@ -35,27 +43,27 @@ public class OrderService {
             Map<String, Object> param = new HashMap<String, Object>(2);
             param.put("itemId", itemId);
             param.put("increment", increment);
-            itemMapper.updateInventoryQuantity(param);
+            itemDao.updateInventoryQuantity(param);
         }
 
-        orderMapper.insertOrder(order);
-        orderMapper.insertOrderStatus(order);
+        orderDao.insertOrder(order);
+        orderDao.insertOrderStatus(order);
         for (int i = 0; i < order.getLineItems().size(); i++) {
             LineItem lineItem = (LineItem) order.getLineItems().get(i);
             lineItem.setOrderId(order.getOrderId());
-            lineItemMapper.insertLineItem(lineItem);
+            lineItemDao.insertLineItem(lineItem);
         }
     }
 
 
     public Order getOrder(int orderId) {
-        Order order = orderMapper.getOrder(orderId);
-        order.setLineItems(lineItemMapper.getLineItemsByOrderId(orderId));
+        Order order = orderDao.getOrder(orderId);
+        order.setLineItems(lineItemDao.getLineItemsByOrderId(orderId));
 
         for (int i = 0; i < order.getLineItems().size(); i++) {
             LineItem lineItem = (LineItem) order.getLineItems().get(i);
-            Item item = itemMapper.getItem(lineItem.getItemId());
-            item.setQuantity(itemMapper.getInventoryQuantity(lineItem.getItemId()));
+            Item item = itemDao.getItem(lineItem.getItemId());
+            item.setQuantity(itemDao.getInventoryQuantity(lineItem.getItemId()));
             lineItem.setItem(item);
         }
 
@@ -63,18 +71,18 @@ public class OrderService {
     }
 
     public List<Order> getOrdersByUsername(String username) {
-        return orderMapper.getOrdersByUsername(username);
+        return orderDao.getOrdersByUsername(username);
     }
 
     public int getNextId(String name) {
         Sequence sequence = new Sequence(name, -1);
-        sequence = (Sequence) sequenceMapper.getSequence(sequence);
+        sequence = (Sequence) sequenceDao.getSequence(sequence);
         if (sequence == null) {
             throw new RuntimeException("Error: A null sequence was returned from the database (could not get next " + name
                     + " sequence).");
         }
         Sequence parameterObject = new Sequence(name, sequence.getNextId() + 1);
-        sequenceMapper.updateSequence(parameterObject);
+        sequenceDao.updateSequence(parameterObject);
         return sequence.getNextId();
     }
 

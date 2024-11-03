@@ -18,7 +18,11 @@
             </tr>
             <tr>
                 <td>Email:</td>
-                <td><input type="email" name="email" required></td>
+                <td><c:out value="${sessionScope.email}" /></td>
+            </tr>
+            <tr>
+                <td>Email Code:</td>
+                <td><input type="text" name="emailcode" required></td>
             </tr>
             <tr>
                 <td>Username:</td>

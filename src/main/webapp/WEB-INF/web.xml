@@ -101,6 +101,41 @@
     </servlet-mapping>
 
     <servlet>
+        <servlet-name>MailcodeFormServlet</servlet-name>
+        <servlet-class>csu.mypetstoree.web.servlet.MailcodeFormServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>MailcodeFormServlet</servlet-name>
+        <url-pattern>/mailcodeForm</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>MailcodeServlet</servlet-name>
+        <servlet-class>csu.mypetstoree.web.servlet.MailcodeServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>MailcodeServlet</servlet-name>
+        <url-pattern>/mailcode</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>FindPasswordFormServlet</servlet-name>
+        <servlet-class>csu.mypetstoree.web.servlet.FindPasswordFormServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>FindPasswordFormServlet</servlet-name>
+        <url-pattern>/findPasswordForm</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>FindPasswordServlet</servlet-name>
+        <servlet-class>csu.mypetstoree.web.servlet.FindPasswordServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>FindPasswordServlet</servlet-name>
+        <url-pattern>/findPassword</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
         <servlet-name>EditAccountFormServlet</servlet-name>
         <servlet-class>csu.mypetstoree.web.servlet.EditAccountFormServlet</servlet-class>
     </servlet>

@@ -6,6 +6,7 @@ import csu.mypetstoree.persistence.impl.AccountDaoImpl;
 
 public class AccountService {
 
+
     public static Account getAccount(String username, String password) {
         Account account = new Account();
         account.setUsername(username);
@@ -26,5 +27,10 @@ public class AccountService {
         accountDao.updateAccount(account);
         accountDao.updateSignon(account);
         accountDao.updateProfile(account);
+    }
+
+    public static void updateSignOn(Account account) {
+        AccountDao accountDao = new AccountDaoImpl();
+        accountDao.updateSignon(account);
     }
 }
