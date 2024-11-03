@@ -1,15 +1,16 @@
-package csu.mypetstoree.persistence;
+package csu.mypetstoree.persistence.impl;
 
 import csu.mypetstoree.domain.Account;
+import csu.mypetstoree.persistence.AccountDao;
 import csu.mypetstoree.persistence.DBUtil;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-public class AccountDao {
+public class AccountDaoImpl implements AccountDao {
 
-    public static Account getAccountByUsername(String username){
+    public Account getAccountByUsername(String username){
         Account  ac = null;
         try {
             Connection connection = DBUtil.getConnection();
@@ -32,8 +33,8 @@ public class AccountDao {
                 ac.setPhone(resultSet.getString("phone"));
                 ac.setLanguagePreference(resultSet.getString("languagePreference"));
                 ac.setFavouriteCategoryId(resultSet.getString("favouriteCategoryId"));
-                ac.setListOption(resultSet.getInt("listOption") == 0);
-                ac.setBannerOption(resultSet.getInt("bannerOption") == 0);
+                ac.setListOption(resultSet.getInt("listOption") == 1);
+                ac.setBannerOption(resultSet.getInt("bannerOption") == 1);
                 ac.setBannerName(resultSet.getString("bannerName"));
             }
             DBUtil.closeResultSet(resultSet);
@@ -45,7 +46,7 @@ public class AccountDao {
         return ac;
     };
 
-    public static Account getAccountByUsernameAndPassword(Account account){
+    public Account getAccountByUsernameAndPassword(Account account){
         Account  ac = null;
         try {
             Connection connection = DBUtil.getConnection();
@@ -69,8 +70,8 @@ public class AccountDao {
                  ac.setPhone(resultSet.getString("phone"));
                  ac.setLanguagePreference(resultSet.getString("languagePreference"));
                  ac.setFavouriteCategoryId(resultSet.getString("favouriteCategoryId"));
-                 ac.setListOption(resultSet.getInt("listOption") == 0);
-                 ac.setBannerOption(resultSet.getInt("bannerOption") == 0);
+                 ac.setListOption(resultSet.getInt("listOption") == 1);
+                 ac.setBannerOption(resultSet.getInt("bannerOption") == 1);
                  ac.setBannerName(resultSet.getString("bannerName"));
              }
             DBUtil.closeResultSet(resultSet);
@@ -82,7 +83,7 @@ public class AccountDao {
         return ac;
     };
 
-    public static void insertAccount(Account account){
+    public void insertAccount(Account account){
         try {
             Connection connection = DBUtil.getConnection();
             PreparedStatement statement = connection.prepareStatement(INSERT_ACCOUNT);
@@ -111,7 +112,7 @@ public class AccountDao {
         }
     };
 
-    public static void insertProfile(Account account){
+    public void insertProfile(Account account){
         try {
             Connection connection = DBUtil.getConnection();
             PreparedStatement statement = connection.prepareStatement(INSERT_PROFILE);
@@ -131,7 +132,7 @@ public class AccountDao {
         }
     };
 
-    public static void insertSignon(Account account){
+    public void insertSignon(Account account){
         try {
             Connection connection = DBUtil.getConnection();
             PreparedStatement statement = connection.prepareStatement(INSERT_SIGN_ON);
@@ -150,7 +151,7 @@ public class AccountDao {
         }
     };
 
-    public static void updateAccount(Account account){
+    public void updateAccount(Account account){
         try {
             Connection connection = DBUtil.getConnection();
             PreparedStatement statement = connection.prepareStatement(UPDATE_ACCOUNT);
@@ -179,7 +180,7 @@ public class AccountDao {
         }
     };
 
-    public static void updateProfile(Account account){
+    public void updateProfile(Account account){
         try {
             Connection connection = DBUtil.getConnection();
             PreparedStatement statement = connection.prepareStatement(UPDATE_PROFILE);
@@ -199,7 +200,7 @@ public class AccountDao {
         }
     };
 
-    public static void updateSignon(Account account){
+    public void updateSignon(Account account){
         try {
             Connection connection = DBUtil.getConnection();
             PreparedStatement statement = connection.prepareStatement(UPDATE_SIGN_ON);

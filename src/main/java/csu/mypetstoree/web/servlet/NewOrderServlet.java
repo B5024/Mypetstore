@@ -1,2 +1,8 @@
-package csu.mypetstoree.web.servlet;public class NewOrderServlet {
+package csu.mypetstoree.web.servlet;
+
+import jakarta.servlet.http.HttpServlet;
+
+public class NewOrderServlet extends HttpServlet {
+
+
 }
