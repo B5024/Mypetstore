@@ -10,7 +10,7 @@
                 <td>Card Type:</td>
                 <td>
                     <select name="cardType">
-                        <option value="Visa">Visa</option>
+                        <option value="Visa" selected="selected">Visa</option>
                         <option value="MasterCard">MasterCard</option>
                         <option value="American Express">American Express</option>
                     </select>
@@ -36,31 +36,31 @@
             </tr>
             <tr>
                 <td>Last name:</td>
-                <td><input type="text" name="order.billToLastName" /></td>
+                <td><input type="text" name="billToLastName" /></td>
             </tr>
             <tr>
                 <td>Address 1:</td>
-                <td><input type="text" size="40" name="order.billAddress1" /></td>
+                <td><input type="text" size="40" name="billAddress1" /></td>
             </tr>
             <tr>
                 <td>Address 2:</td>
-                <td><input type="text" size="40" name="order.billAddress2" /></td>
+                <td><input type="text" size="40" name="billAddress2" /></td>
             </tr>
             <tr>
                 <td>City:</td>
-                <td><input type="text" name="order.billCity" /></td>
+                <td><input type="text" name="billCity" /></td>
             </tr>
             <tr>
                 <td>State:</td>
-                <td><input type="text" size="4" name="order.billState" /></td>
+                <td><input type="text" size="4" name="billState" /></td>
             </tr>
             <tr>
                 <td>Zip:</td>
-                <td><input type="text" size="10" name="order.billZip" /></td>
+                <td><input type="text" size="10" name="billZip" /></td>
             </tr>
             <tr>
                 <td>Country:</td>
-                <td><input type="text" size="15" name="order.billCountry" /></td>
+                <td><input type="text" size="15" name="billCountry" /></td>
             </tr>
 
             <tr>
