@@ -13,6 +13,7 @@ public class CartItem implements Serializable {
     private boolean inStock;      //该商品目前是否有货
     private BigDecimal total;         //该商品总价（listPrice * quantity）
 
+
     public boolean isInStock() {
         return inStock;
     }
