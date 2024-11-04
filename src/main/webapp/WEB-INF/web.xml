@@ -88,6 +88,14 @@
         <servlet-name>ItemFormServlet</servlet-name>
         <url-pattern>/itemForm</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>SubmitDataServlet</servlet-name>
+        <servlet-class>csu.mypetstoree.web.servlet.SubmitDataServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SubmitDataServlet</servlet-name>
+        <url-pattern>/SubmitDataForm</url-pattern>
+    </servlet-mapping>
 
 
     <servlet>

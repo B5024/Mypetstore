@@ -20,6 +20,9 @@ public class ProductDaoImpl implements ProductDao {
     public static final String SEARCH_PRODUCT_LIST =
             "SELECT PRODUCTID,NAME,DESCN AS description,CATEGORY AS categoryId FROM PRODUCT WHERE lower(name) like ?";
 
+    public static final String GET_PRODUCT_BY_NAME =
+            "SELECT PRODUCTID,NAME,DESCN AS description,CATEGORY AS categoryId FROM PRODUCT WHERE NAME = ?";
+
     @Override
     public List<Product> getProductListByCategory(String categoryId) {
         List<Product> productList = new ArrayList<Product>();
@@ -92,5 +95,29 @@ public class ProductDaoImpl implements ProductDao {
             e.printStackTrace();
         }
         return productList;
+    }
+
+    @Override
+    public Product getProductByName(String name) {
+        Product product = null;
+        try {
+            Connection conn = DBUtil.getConnection();
+            PreparedStatement ps = conn.prepareStatement(GET_PRODUCT_BY_NAME);
+            ps.setString(1, name);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()){
+                product = new Product();
+                product.setProductId(rs.getString("PRODUCTID"));
+                product.setName(rs.getString("NAME"));
+                product.setDescription(rs.getString("description"));
+                product.setCategoryId(rs.getString("categoryId"));
+            }
+            DBUtil.closeResultSet(rs);
+            DBUtil.closePreparedStatement(ps);
+            DBUtil.closeConnection(conn);
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return product;
     }
 }
