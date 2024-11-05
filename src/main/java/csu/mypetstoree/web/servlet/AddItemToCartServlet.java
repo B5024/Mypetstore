@@ -12,6 +12,7 @@ import java.io.IOException;
 import csu.mypetstoree.domain.Cart;
 import csu.mypetstoree.domain.Item;
 import csu.mypetstoree.service.CatalogService;
+import csu.mypetstoree.service.LogsService;
 
 public class AddItemToCartServlet extends HttpServlet {
     private CatalogService catalogService;
@@ -45,6 +46,7 @@ public class AddItemToCartServlet extends HttpServlet {
                 for (CartItem cartItem : cart.getCartItemList()) {
                     catalogService.addCartItem(cartItem,username);
                 }
+                LogsService.insertCartLogs(username,"add",workingItemId);
             } else {
                 CatalogService catalogService = new CatalogService();
                 boolean isInStock = catalogService.isItemInStock(workingItemId);
@@ -57,6 +59,7 @@ public class AddItemToCartServlet extends HttpServlet {
                 cartItem.setQuantity(item.getQuantity());
                 cartItem.setInStock(isInStock);
                 catalogService.addCartItem(cartItem,username);
+                LogsService.insertCartLogs(username,"add",workingItemId);
             }
 
 
