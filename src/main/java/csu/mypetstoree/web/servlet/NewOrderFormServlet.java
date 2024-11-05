@@ -14,6 +14,7 @@ public class NewOrderFormServlet extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
+        //检测是否有用户
         Account account = (Account) session.getAttribute("loginAccount");
         if (account == null) {
             response.sendRedirect("signOnForm");

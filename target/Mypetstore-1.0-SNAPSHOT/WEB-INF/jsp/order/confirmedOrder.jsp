@@ -26,7 +26,7 @@
                 <td colspan=4>${sessionScope.order1.expiryDate}</td>
             </tr>
             <tr>
-                <th colspan=2>Billing Address</th>
+                <th colspan=5>Billing Address</th>
             </tr>
             <tr>
                 <td>First Name:</td>

@@ -1,12 +1,15 @@
 package csu.mypetstoree.service;
 
 
+import csu.mypetstoree.domain.CartItem;
 import csu.mypetstoree.domain.Category;
 import csu.mypetstoree.domain.Product;
 import csu.mypetstoree.domain.Item;
+import csu.mypetstoree.persistence.CartItemDao;
 import csu.mypetstoree.persistence.CategoryDao;
 import csu.mypetstoree.persistence.ItemDao;
 import csu.mypetstoree.persistence.ProductDao;
+import csu.mypetstoree.persistence.impl.CartItemDaoImpl;
 import csu.mypetstoree.persistence.impl.CategoryDaoImpl;
 import csu.mypetstoree.persistence.impl.ItemDaoImpl;
 import csu.mypetstoree.persistence.impl.ProductDaoImpl;
@@ -18,10 +21,12 @@ public class CatalogService {
     private CategoryDao categoryDao;
     private ProductDao productDao;
     private ItemDao itemDao;
+    private CartItemDao cartItemDao;
     public CatalogService() {
         this.categoryDao = new CategoryDaoImpl();
         this.productDao = new ProductDaoImpl();
         this.itemDao = new ItemDaoImpl();
+        this.cartItemDao = new CartItemDaoImpl();
     }
 
     public List<Category> getCategoryList() throws SQLException {
@@ -59,6 +64,13 @@ public class CatalogService {
 
     public boolean isItemInStock(String itemId) {
         return itemDao.getInventoryQuantity(itemId) > 0;
+    }
+
+    public List<CartItem> getCartItemList(String username) {
+        return cartItemDao.getCartItems(username);
+    }
+    public void addCartItem(CartItem cartItem,String username) {
+        cartItemDao.addCartItem(cartItem,username);
     }
 }
 

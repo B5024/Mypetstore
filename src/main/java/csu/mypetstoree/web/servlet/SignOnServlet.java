@@ -2,6 +2,7 @@ package csu.mypetstoree.web.servlet;
 
 import csu.mypetstoree.domain.Product;
 import csu.mypetstoree.service.CatalogService;
+import csu.mypetstoree.service.LogsService;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -46,6 +47,7 @@ public class SignOnServlet extends HttpServlet {
                     session.setAttribute("myList", myList);
                 }
 
+                LogsService.insertLoginLogs(username);
                 resp.sendRedirect("mainForm");
             }
         }
