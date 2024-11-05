@@ -33,10 +33,11 @@ public class Cart implements Serializable {
         return itemMap.containsKey(itemId);
     }
 
-    public void setItemList(List<CartItem> itemList) {
+    public void setCartItemList(List<CartItem> itemList) {
         this.itemList = itemList;
     }
     //向购物车内添加商品
+
     public void addItem(csu.mypetstoree.domain.Item item, boolean isInStock) {
         CartItem cartItem = (CartItem) itemMap.get(item.getItemId());
         if (cartItem == null) {
@@ -86,4 +87,6 @@ public class Cart implements Serializable {
         }
         return subTotal;
     }
+
+
 }

@@ -66,8 +66,11 @@ public class CatalogService {
         return itemDao.getInventoryQuantity(itemId) > 0;
     }
 
-    public List<CartItem> getCartItemList() {
-        return cartItemDao.getCartItems();
+    public List<CartItem> getCartItemList(String username) {
+        return cartItemDao.getCartItems(username);
+    }
+    public void addCartItem(CartItem cartItem,String username) {
+        cartItemDao.addCartItem(cartItem,username);
     }
 }
 

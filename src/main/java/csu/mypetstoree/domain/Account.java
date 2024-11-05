@@ -25,6 +25,9 @@ public class Account implements Serializable {
     private boolean bannerOption;
     private String bannerName;
 
+    //这里需要把购物车表和账户联系在一起
+    private String cartId;
+
     public Account() {}
 
     public Account(String username,String password){
