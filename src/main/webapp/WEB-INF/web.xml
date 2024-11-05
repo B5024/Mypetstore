@@ -9,35 +9,36 @@
         <welcome-file>index.html</welcome-file>
     </welcome-file-list>
 
+
     <servlet>
         <servlet-name>MainFormServlet</servlet-name>
         <servlet-class>csu.mypetstoree.web.servlet.MainFormServlet</servlet-class>
     </servlet>
-    
     <servlet-mapping>
         <servlet-name>MainFormServlet</servlet-name>
         <url-pattern>/mainForm</url-pattern>
     </servlet-mapping>
 
+
     <servlet>
         <servlet-name>SignOnFormServlet</servlet-name>
         <servlet-class>csu.mypetstoree.web.servlet.SignOnFormServlet</servlet-class>
     </servlet>
-
     <servlet-mapping>
         <servlet-name>SignOnFormServlet</servlet-name>
         <url-pattern>/signOnForm</url-pattern>
     </servlet-mapping>
 
+
     <servlet>
         <servlet-name>NewOrderFormServlet</servlet-name>
         <servlet-class>csu.mypetstoree.web.servlet.NewOrderFormServlet</servlet-class>
     </servlet>
-
     <servlet-mapping>
         <servlet-name>NewOrderFormServlet</servlet-name>
         <url-pattern>/newOrderForm</url-pattern>
     </servlet-mapping>
+
 
     <servlet>
         <servlet-name>SignOnServlet</servlet-name>
@@ -48,6 +49,7 @@
         <url-pattern>/signOn</url-pattern>
     </servlet-mapping>
 
+
     <servlet>
         <servlet-name>SignOutServlet</servlet-name>
         <servlet-class>csu.mypetstoree.web.servlet.SignOutServlet</servlet-class>
@@ -57,6 +59,7 @@
         <url-pattern>/signOut</url-pattern>
     </servlet-mapping>
 
+
     <servlet>
         <servlet-name>CategoryFormServlet</servlet-name>
         <servlet-class>csu.mypetstoree.web.servlet.CategoryFormServlet</servlet-class>
@@ -65,6 +68,8 @@
         <servlet-name>CategoryFormServlet</servlet-name>
         <url-pattern>/categoryForm</url-pattern>
     </servlet-mapping>
+
+
     <servlet>
         <servlet-name>ProductFormServlet</servlet-name>
         <servlet-class>csu.mypetstoree.web.servlet.ProductFormServlet</servlet-class>
@@ -73,6 +78,8 @@
         <servlet-name>ProductFormServlet</servlet-name>
         <url-pattern>/productForm</url-pattern>
     </servlet-mapping>
+
+
     <servlet>
         <servlet-name>ItemFormServlet</servlet-name>
         <servlet-class>csu.mypetstoree.web.servlet.ItemFormServlet</servlet-class>
@@ -81,6 +88,15 @@
         <servlet-name>ItemFormServlet</servlet-name>
         <url-pattern>/itemForm</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>SubmitDataServlet</servlet-name>
+        <servlet-class>csu.mypetstoree.web.servlet.SubmitDataServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SubmitDataServlet</servlet-name>
+        <url-pattern>/SubmitDataForm</url-pattern>
+    </servlet-mapping>
+
 
     <servlet>
         <servlet-name>RegisterFormServlet</servlet-name>
@@ -91,6 +107,7 @@
         <url-pattern>/registerForm</url-pattern>
     </servlet-mapping>
 
+
     <servlet>
         <servlet-name>RegisterServlet</servlet-name>
         <servlet-class>csu.mypetstoree.web.servlet.RegisterServlet</servlet-class>
@@ -99,6 +116,7 @@
         <servlet-name>RegisterServlet</servlet-name>
         <url-pattern>/register</url-pattern>
     </servlet-mapping>
+
 
     <servlet>
         <servlet-name>MailcodeFormServlet</servlet-name>
@@ -109,6 +127,7 @@
         <url-pattern>/mailcodeForm</url-pattern>
     </servlet-mapping>
 
+
     <servlet>
         <servlet-name>MailcodeServlet</servlet-name>
         <servlet-class>csu.mypetstoree.web.servlet.MailcodeServlet</servlet-class>
@@ -118,6 +137,7 @@
         <url-pattern>/mailcode</url-pattern>
     </servlet-mapping>
 
+
     <servlet>
         <servlet-name>FindPasswordFormServlet</servlet-name>
         <servlet-class>csu.mypetstoree.web.servlet.FindPasswordFormServlet</servlet-class>
@@ -126,6 +146,8 @@
         <servlet-name>FindPasswordFormServlet</servlet-name>
         <url-pattern>/findPasswordForm</url-pattern>
     </servlet-mapping>
+
+
     <servlet>
         <servlet-name>FindPasswordServlet</servlet-name>
         <servlet-class>csu.mypetstoree.web.servlet.FindPasswordServlet</servlet-class>
@@ -135,6 +157,7 @@
         <url-pattern>/findPassword</url-pattern>
     </servlet-mapping>
 
+
     <servlet>
         <servlet-name>EditAccountFormServlet</servlet-name>
         <servlet-class>csu.mypetstoree.web.servlet.EditAccountFormServlet</servlet-class>
@@ -143,6 +166,8 @@
         <servlet-name>EditAccountFormServlet</servlet-name>
         <url-pattern>/editAccountForm</url-pattern>
     </servlet-mapping>
+
+
     <servlet>
         <servlet-name>EditAccountServlet</servlet-name>
         <servlet-class>csu.mypetstoree.web.servlet.EditAccountServlet</servlet-class>
@@ -153,7 +178,6 @@
     </servlet-mapping>
 
 
-
     <servlet>
         <servlet-name>AddItemToCartServlet</servlet-name>
         <servlet-class>csu.mypetstoree.web.servlet.AddItemToCartServlet</servlet-class>
@@ -162,6 +186,8 @@
         <servlet-name>AddItemToCartServlet</servlet-name>
         <url-pattern>/addItemToCart</url-pattern>
     </servlet-mapping>
+
+
     <servlet>
         <servlet-name>CartFormServlet</servlet-name>
         <servlet-class>csu.mypetstoree.web.servlet.CartFormServlet</servlet-class>
@@ -170,6 +196,8 @@
         <servlet-name>CartFormServlet</servlet-name>
         <url-pattern>/cartForm</url-pattern>
     </servlet-mapping>
+
+
     <servlet>
         <servlet-name>RemoveCartItemServlet</servlet-name>
         <servlet-class>csu.mypetstoree.web.servlet.RemoveCartItemServlet</servlet-class>
@@ -178,6 +206,8 @@
         <servlet-name>RemoveCartItemServlet</servlet-name>
         <url-pattern>/removeCartItem</url-pattern>
     </servlet-mapping>
+
+
     <servlet>
         <servlet-name>UpdateCartServlet</servlet-name>
         <servlet-class>csu.mypetstoree.web.servlet.UpdateCartServlet</servlet-class>
@@ -186,4 +216,27 @@
         <servlet-name>UpdateCartServlet</servlet-name>
         <url-pattern>/updateCart</url-pattern>
     </servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>NewOrderServlet</servlet-name>
+        <servlet-class>csu.mypetstoree.web.servlet.NewOrderServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>NewOrderServlet</servlet-name>
+        <url-pattern>/newOrder</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>ConfirmOrderServlet</servlet-name>
+        <servlet-class>csu.mypetstoree.web.servlet.ConfirmOrderServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ConfirmOrderServlet</servlet-name>
+        <url-pattern>/confirmOrder</url-pattern>
+    </servlet-mapping>
+
+
 </web-app>
+

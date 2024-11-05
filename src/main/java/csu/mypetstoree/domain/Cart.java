@@ -10,7 +10,8 @@ public class Cart implements Serializable {
     private static final long serialVersionUID = 8329559983943337176L;
     private final Map<String, CartItem> itemMap = Collections.synchronizedMap(new HashMap<String, CartItem>());
 
-    private final List<CartItem> itemList = new ArrayList<CartItem>();
+    //这里原本是final
+    private List<CartItem> itemList = new ArrayList<CartItem>();
 
     public Iterator<CartItem> getCartItems() {
         return itemList.iterator();
@@ -32,7 +33,11 @@ public class Cart implements Serializable {
         return itemMap.containsKey(itemId);
     }
 
+    public void setCartItemList(List<CartItem> itemList) {
+        this.itemList = itemList;
+    }
     //向购物车内添加商品
+
     public void addItem(csu.mypetstoree.domain.Item item, boolean isInStock) {
         CartItem cartItem = (CartItem) itemMap.get(item.getItemId());
         if (cartItem == null) {
@@ -82,4 +87,6 @@ public class Cart implements Serializable {
         }
         return subTotal;
     }
+
+
 }

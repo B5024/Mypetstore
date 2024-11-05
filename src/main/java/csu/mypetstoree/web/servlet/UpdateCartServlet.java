@@ -17,6 +17,7 @@ public class UpdateCartServlet extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
         HttpSession session = req.getSession();
         Cart cart = (Cart)session.getAttribute("cart");
         Iterator<CartItem> cartItems = cart.getAllCartItems();

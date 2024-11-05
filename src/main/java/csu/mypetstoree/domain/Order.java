@@ -255,6 +255,36 @@ public class Order implements Serializable {
         return lineItems;
     }
 
+    public Order() {
+    }
+
+    public Order(String shipAddress1, String shipAddress2,
+                 String shipCity, String shipState, String shipZip,
+                 String shipCountry, String billAddress1, String billAddress2,
+                 String billCity, String billState, String billZip, String billCountry,
+                 String billToFirstName, String billToLastName, String shipToFirstName,
+                 String shipToLastName, String creditCard, String expiryDate, String cardType) {
+        this.shipAddress1 = shipAddress1;
+        this.shipAddress2 = shipAddress2;
+        this.shipCity = shipCity;
+        this.shipState = shipState;
+        this.shipZip = shipZip;
+        this.shipCountry = shipCountry;
+        this.billAddress1 = billAddress1;
+        this.billAddress2 = billAddress2;
+        this.billCity = billCity;
+        this.billState = billState;
+        this.billZip = billZip;
+        this.billCountry = billCountry;
+        this.billToFirstName = billToFirstName;
+        this.billToLastName = billToLastName;
+        this.shipToFirstName = shipToFirstName;
+        this.shipToLastName = shipToLastName;
+        this.creditCard = creditCard;
+        this.expiryDate = expiryDate;
+        this.cardType = cardType;
+    }
+
     public void initOrder(Account account, Cart cart) {
 
         username = account.getUsername();
