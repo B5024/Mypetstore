@@ -32,13 +32,16 @@ public class CartFormServlet extends HttpServlet {
             catalogService = new CatalogService();
             List<CartItem> cartItems = catalogService.getCartItemList(username);
             Cart cart = new Cart();
-            for (CartItem cartItem : cartItems) {
-                cart.addItem(cartItem.getItem(),cartItem.isInStock());
-            }
+            cart.setCartItemList(cartItems);
+            cart.setItemMap(cartItems);
+
+//            for (CartItem cartItem : cartItems) {
+//                cart.addItem(cartItem.getItem(),cartItem.isInStock());
+//            }
 
             //这里可以改进 只需要quantity就可以了
-            cart.setCartItemList(cartItems);
             session.setAttribute("cart", cart);
+//            System.out.println(cart.getCartItemList());
             req.getRequestDispatcher("/WEB-INF/jsp/cart/cart.jsp").forward(req, resp);
         }
     }

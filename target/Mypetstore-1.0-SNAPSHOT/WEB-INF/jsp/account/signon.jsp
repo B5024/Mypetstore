@@ -4,7 +4,7 @@
 
     <form action="signOn" method="post">
         <p>Please enter your username and password.</p>
-        <c:if test="${requestScope.signOnMsg = null}">
+        <c:if test="${requestScope.signOnMsg != null}">
             <p> <font color="red">${requestScope.signOnMsg}</font> </p>
         </c:if>
         <p>

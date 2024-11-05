@@ -9,6 +9,8 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.List;
+
 import csu.mypetstoree.domain.Cart;
 import csu.mypetstoree.domain.Item;
 import csu.mypetstoree.service.CatalogService;
@@ -28,41 +30,37 @@ public class AddItemToCartServlet extends HttpServlet {
             resp.sendRedirect("signOnForm");
         }
         else {
-            String username = account.getUsername();
-            catalogService = new CatalogService();
             String workingItemId = req.getParameter("workingItemId");
-            Cart cart = (Cart)session.getAttribute("cart");
+            String username = account.getUsername();
 
-            //read cart from dg
-            if (cart == null) {
-                cart = new Cart();
-                cart.setCartItemList(catalogService.getCartItemList(username));
-            }
+            catalogService = new CatalogService();
+            List<CartItem> cartItems = catalogService.getCartItemList(username);
+            Cart cart = new Cart();
+            cart.setCartItemList(cartItems);
+            cart.setItemMap(cartItems);
 
+            //如果存在这个商品的话，就增加数量，并把这个商品添加到
             if (cart.containsItemId(workingItemId)) {
+                CartItem cartItem = new CartItem();
                 //添加数量
-                cart.setCartItemList(catalogService.getCartItemList(username));
                 cart.incrementQuantityByItemId(workingItemId);
-                for (CartItem cartItem : cart.getCartItemList()) {
-                    catalogService.addCartItem(cartItem,username);
-                }
+                catalogService.addCartItem(cart.getCartItemById(workingItemId),username);
                 LogsService.insertCartLogs(username,"add",workingItemId);
             } else {
-                CatalogService catalogService = new CatalogService();
+                //这里把赋值cart提供给前端
                 boolean isInStock = catalogService.isItemInStock(workingItemId);
                 Item item = catalogService.getItem(workingItemId);
                 cart.addItem(item, isInStock);
 
+                //这里存入数据库
+                CatalogService catalogService = new CatalogService();
                 CartItem cartItem = new CartItem();
                 cartItem.setItem(item);
-                //获取数量
-                cartItem.setQuantity(item.getQuantity());
+                cartItem.setQuantity(1);
                 cartItem.setInStock(isInStock);
                 catalogService.addCartItem(cartItem,username);
                 LogsService.insertCartLogs(username,"add",workingItemId);
             }
-
-
 
             session.setAttribute("cart", cart);
             req.getRequestDispatcher(CART_FORM).forward(req, resp);
