@@ -27,6 +27,7 @@ public class AddItemToCartServlet extends HttpServlet {
         if (cart.containsItemId(workingItemId)) {
             cart.incrementQuantityByItemId(workingItemId);
         } else {
+
             CatalogService catalogService = new CatalogService();
             boolean isInStock = catalogService.isItemInStock(workingItemId);
             Item item = catalogService.getItem(workingItemId);
