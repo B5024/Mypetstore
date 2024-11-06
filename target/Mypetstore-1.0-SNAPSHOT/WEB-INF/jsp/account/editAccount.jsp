@@ -96,20 +96,20 @@
         <tr>
             <td>Enable MyList</td>
             <td>
-                <input type="radio" name="listOption" value="true" id="listOptionYes">
+                <input type="radio" name="listOption" value="true" id="listOptionYes" checked>
                 <label for="listOptionYes">Yes</label>
 
-                <input type="radio" name="listOption" value="false" id="listOptionNo" checked>
+                <input type="radio" name="listOption" value="false" id="listOptionNo" >
                 <label for="listOptionNo">No</label>
             </td>
         </tr>
         <tr>
             <td>Enable MyBanner</td>
             <td>
-                <input type="radio" name="bannerOption" value="true" id="bannerYes">
+                <input type="radio" name="bannerOption" value="true" id="bannerYes" checked>
                 <label for="bannerYes">Yes</label>
 
-                <input type="radio" name="bannerOption" value="false" id="bannerNo" checked>
+                <input type="radio" name="bannerOption" value="false" id="bannerNo" >
                 <label for="bannerNo">No</label>
             </td>
         </tr>

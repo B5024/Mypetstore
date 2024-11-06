@@ -2,6 +2,7 @@ package csu.mypetstoree.web.servlet;
 
 import csu.mypetstoree.domain.Account;
 import csu.mypetstoree.service.AccountService;
+import csu.mypetstoree.service.CatalogService;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -31,6 +32,7 @@ public class RegisterServlet extends HttpServlet {
     private String Msg;
 
     private HttpSession session;
+    private CatalogService catalogService;
 
 
     @Override
@@ -52,6 +54,9 @@ public class RegisterServlet extends HttpServlet {
         this.zip = req.getParameter("zip");
         this.country = req.getParameter("country");
         this.phone = req.getParameter("phone");
+
+        catalogService = new CatalogService();
+        catalogService.NewCartItemTable(username);
 
         if (!validateRegistration()){
             req.setAttribute("registerMsg", Msg );

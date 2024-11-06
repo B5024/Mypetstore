@@ -75,6 +75,9 @@ public class CatalogService {
     public void removeItemById(String itemId,String username) {
         cartItemDao.removeItemById(itemId,username);
     }
+    public void NewCartItemTable(String username) {
+        cartItemDao.NewCartItemTable(username);
+    }
 }
 
 
