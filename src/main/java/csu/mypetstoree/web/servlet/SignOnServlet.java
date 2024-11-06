@@ -63,10 +63,6 @@ public class SignOnServlet extends HttpServlet {
             Msg = "Password is required";
             return false;
         }
-        if(!containsBothLettersAndNumbers(password)){
-            Msg = "Password should have at least one letter and one number";
-            return false;
-        }
         return true;
     }
 
