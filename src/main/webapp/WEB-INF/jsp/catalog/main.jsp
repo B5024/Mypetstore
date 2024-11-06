@@ -1,8 +1,11 @@
 <%@ include file="../common/top.jsp"%>
 <div id="Welcome">
     <div id="WelcomeContent">
-<%--        这里是欢迎用户--%>
-    </div>
+        Welcome
+        <c:if
+            test="${sessionScope.loginAccount != null}">
+            ${sessionScope.loginAccount.username}
+    </c:if>!!</div>
 </div>
 
 <div id="Main">

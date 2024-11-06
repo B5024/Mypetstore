@@ -25,6 +25,10 @@ public class Cart implements Serializable {
         return itemList.size();
     }
 
+    public CartItem getCartItemById(String itemId) {
+        return (CartItem) itemMap.get(itemId);
+    }
+
     public Iterator<CartItem> getAllCartItems() {
         return itemList.iterator();
     }
@@ -33,7 +37,15 @@ public class Cart implements Serializable {
         return itemMap.containsKey(itemId);
     }
 
+    public void setItemMap(List<CartItem> itemList) {
+//        this.itemMap.clear();
+        for (CartItem cartItem : itemList) {
+            itemMap.put(cartItem.getItem().getItemId(),cartItem);
+        }
+    }
+
     public void setCartItemList(List<CartItem> itemList) {
+//        itemList.clear();
         this.itemList = itemList;
     }
     //向购物车内添加商品
@@ -57,6 +69,7 @@ public class Cart implements Serializable {
         if (cartItem == null) {
             return null;
         } else {
+            System.out.println("Removing item: " + itemId);
             itemList.remove(cartItem);
             return cartItem.getItem();
         }

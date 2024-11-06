@@ -321,3 +321,12 @@ body>#Banner {
     background-color:#ccc;
     text-align:left;
 }
+body>#WelcomeContent {
+    margin: 0;
+    padding: 0ex 0ex 0ex 0ex;
+    width: 99%;
+    color: #d13b3b;
+    background-color: #472a2a;
+    border-width: 0;
+    text-align: center;
+}

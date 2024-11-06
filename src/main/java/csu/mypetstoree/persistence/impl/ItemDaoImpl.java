@@ -66,20 +66,6 @@ public class ItemDaoImpl implements ItemDao {
     }
 
 
-    //                Item item = new Item();
-//                item.setItemId(resultSet.getString(1));
-//                item.setProductId(resultSet.getString(2));
-//                item.setListPrice(resultSet.getBigDecimal(3));
-//
-//                item.setUnitCost(resultSet.getBigDecimal(4));
-//                item.setSupplierId(resultSet.getInt(5));
-//                item.setStatus(resultSet.getString(6));
-//                item.setAttribute1(resultSet.getString(7));
-//                item.setAttribute2(resultSet.getString(8));
-//                item.setAttribute3(resultSet.getString(9));
-//                item.setAttribute4(resultSet.getString(10));
-//                item.setAttribute5(resultSet.getString(11));
-//                itemList.add(item);
     @Override
     public List<Item> getItemListByProduct(String productId) {
         List<Item> itemList = new ArrayList<Item>();
