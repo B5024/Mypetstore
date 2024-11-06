@@ -24,14 +24,14 @@ public class LogsService {
         Logs cartLog = new Logs(username,currentDate,action,itemId);
 
         LogsDao logsDao = new LogsDaoImpl();
-        logsDao.insertCartLogs(cartLog);
+//        logsDao.insertCartLogs(cartLog);
     }
 
     public static void main(String[] args) {
         LogsDao logsDao = new LogsDaoImpl();
 
-//        insertLoginLogs("j2ee");
-//        insertCartLogs("j2ee","add","EST-1");
+        insertLoginLogs("j2ee");
+        insertCartLogs("j2ee","add","EST-1");
         logsDao.getLoginLogs("j2ee");
         logsDao.getCartLogs("j2ee");
     }

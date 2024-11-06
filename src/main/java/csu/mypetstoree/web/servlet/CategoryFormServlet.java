@@ -1,5 +1,6 @@
 package csu.mypetstoree.web.servlet;
 
+import csu.mypetstoree.domain.Account;
 import csu.mypetstoree.domain.Category;
 import csu.mypetstoree.domain.Product;
 import csu.mypetstoree.service.CatalogService;
@@ -25,6 +26,8 @@ public class CategoryFormServlet extends HttpServlet {
         List <Product> productList = catalogService.getProductListByCategory(categoryId);
 
         HttpSession session = req.getSession();
+        Account account = (Account) session.getAttribute("loginAccount");
+        session.setAttribute("account",account);
         session.setAttribute("category", category);
         session.setAttribute("productList", productList);
         //找到Id之后应该要查出对应的参数然是送进去category.jsp中
