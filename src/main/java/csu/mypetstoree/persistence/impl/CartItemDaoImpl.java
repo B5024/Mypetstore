@@ -27,6 +27,9 @@ public class CartItemDaoImpl implements CartItemDao {
     private static final String SQL_ITEMID_TOP = "SELECT QUANTITY FROM ";
     private static final String SQL_ITEMID_BOTTOM = "_CARTITEM WHERE itemid = ?";
 
+    private static final String NEW_CARTITEM_TABLE_TOP="CREATE TABLE ";
+    private static final String NEW_CARTITEM_TABLE_BUTTON = "_cartitem(itemid varchar(50),instock tinyint(1),quantity int(11);";
+
     @Override
     public List<CartItem> getCartItems(String username) {
         List<CartItem> cartItems = new ArrayList<CartItem>();
@@ -171,4 +174,25 @@ public class CartItemDaoImpl implements CartItemDao {
         }
         return false;
     }
+
+    @Override
+    public void NewCartItemTable(String username) {
+        try {
+            Connection conn = DBUtil.getConnection();
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(NEW_CARTITEM_TABLE_TOP+username+NEW_CARTITEM_TABLE_BUTTON);
+            rs.close();
+            stmt.close();
+            conn.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public void updateCartItem(CartItem cartItem, String username) {
+
+    }
+
+
 }
