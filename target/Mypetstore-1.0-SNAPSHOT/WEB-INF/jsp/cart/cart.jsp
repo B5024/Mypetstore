@@ -44,7 +44,7 @@
                         <td>${cartItem.inStock}</td>
                         <td>
                             <input type="text"
-                                   name="${cartItem.item.itemId}"
+                                   name="quantity"
                                    value="${cartItem.quantity}">
                         </td>
                         <td><fmt:formatNumber value="${cartItem.item.listPrice}"
