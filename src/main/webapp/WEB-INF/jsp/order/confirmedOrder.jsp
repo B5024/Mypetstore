@@ -155,7 +155,7 @@
                 <tr>
                     <td>${cartItem.item.itemId}</td>
                     <td>${cartItem.item.attribute1} ${cartItem.item.product.name}</td>
-                    <td>${cartItem.item.quantity}</td>
+                    <td>${cartItem.quantity}</td>
                     <td>${cartItem.item.listPrice}</td>
                     <td>${cartItem.total}</td>
                 </tr>
