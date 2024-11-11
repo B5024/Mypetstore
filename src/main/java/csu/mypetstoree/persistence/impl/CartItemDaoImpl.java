@@ -27,8 +27,8 @@ public class CartItemDaoImpl implements CartItemDao {
     private static final String SQL_ITEMID_TOP = "SELECT QUANTITY FROM ";
     private static final String SQL_ITEMID_BOTTOM = "_CARTITEM WHERE itemid = ?";
 
-    private static final String NEW_CARTITEM_TABLE_TOP="CREATE TABLE ";
-    private static final String NEW_CARTITEM_TABLE_BUTTON = "_cartitem(itemid varchar(50),instock tinyint(1),quantity int(11);";
+    private static final String NEW_CARTITEM_TABLE_TOP="CREATE TABLE mypetstore.";
+    private static final String NEW_CARTITEM_TABLE_BUTTON = "_cartitem(itemid varchar(50),instock tinyint,quantity int);";
 
     @Override
     public List<CartItem> getCartItems(String username) {
@@ -38,7 +38,7 @@ public class CartItemDaoImpl implements CartItemDao {
         try {
             Connection conn = DBUtil.getConnection();
             Statement stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery(GET_CATEGORY_LIST_TOP+username+"_CARTITEM");
+            ResultSet rs = stmt.executeQuery(GET_CATEGORY_LIST_TOP+username+GET_CATEGORY_LIST_BUTTON);
             while (rs.next()) {
                 String itemId = rs.getString("ITEMID");
                 Item item = catalogService.getItem(itemId);
@@ -180,8 +180,14 @@ public class CartItemDaoImpl implements CartItemDao {
         try {
             Connection conn = DBUtil.getConnection();
             Statement stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery(NEW_CARTITEM_TABLE_TOP+username+NEW_CARTITEM_TABLE_BUTTON);
-            rs.close();
+            boolean isCreated = stmt.execute(NEW_CARTITEM_TABLE_TOP+username+NEW_CARTITEM_TABLE_BUTTON);
+            if(isCreated){
+                System.out.println("New cartitem table created");
+            }else
+            {
+                System.out.println("New cartitem table fail");
+            }
+
             stmt.close();
             conn.close();
         } catch (SQLException e) {
@@ -191,7 +197,7 @@ public class CartItemDaoImpl implements CartItemDao {
 
     @Override
     public void updateCartItem(CartItem cartItem, String username) {
-
+        //用cartitemid就可以了然后把所有都存一边
     }
 
 

@@ -35,10 +35,6 @@ public class CartFormServlet extends HttpServlet {
             cart.setCartItemList(cartItems);
             cart.setItemMap(cartItems);
 
-//            for (CartItem cartItem : cartItems) {
-//                cart.addItem(cartItem.getItem(),cartItem.isInStock());
-//            }
-
             //这里可以改进 只需要quantity就可以了
             session.setAttribute("cart", cart);
 //            System.out.println(cart.getCartItemList());

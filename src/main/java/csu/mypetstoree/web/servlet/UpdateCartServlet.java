@@ -2,6 +2,10 @@ package csu.mypetstoree.web.servlet;
 
 import java.io.IOException;
 import java.util.Iterator;
+import java.util.List;
+
+import csu.mypetstoree.domain.Account;
+import csu.mypetstoree.service.CatalogService;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -12,7 +16,7 @@ import csu.mypetstoree.domain.CartItem;
 
 public class UpdateCartServlet extends HttpServlet {
     private static final String CART_FORM = "/WEB-INF/jsp/cart/cart.jsp";
-
+    private CatalogService catalogService;
     public UpdateCartServlet() {
     }
 
@@ -20,6 +24,12 @@ public class UpdateCartServlet extends HttpServlet {
 
         HttpSession session = req.getSession();
         session.setAttribute("cart", new Cart());
+
+        Account account = (Account) session.getAttribute("loginAccount");
+        String username = account.getUsername();
+        catalogService = new CatalogService();
+        List<CartItem> cartItemList = catalogService.getCartItemList(username);
+
         Cart cart = (Cart)session.getAttribute("cart");
         Iterator<CartItem> cartItems = cart.getAllCartItems();
 
@@ -37,6 +47,10 @@ public class UpdateCartServlet extends HttpServlet {
             } catch (Exception var10) {
             }
         }
+
+//        for (CartItem cartItem : cartItemList) {
+//            String itemId = cartItem.getItem().getItemId();
+//        }
 
         req.getRequestDispatcher("/WEB-INF/jsp/cart/cart.jsp").forward(req, resp);
     }
