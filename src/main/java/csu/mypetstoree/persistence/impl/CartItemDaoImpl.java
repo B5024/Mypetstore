@@ -30,6 +30,9 @@ public class CartItemDaoImpl implements CartItemDao {
     private static final String NEW_CARTITEM_TABLE_TOP="CREATE TABLE mypetstore.";
     private static final String NEW_CARTITEM_TABLE_BUTTON = "_cartitem(itemid varchar(50),instock tinyint,quantity int);";
 
+    private static final String UPDATE_CARTITEM_TOP = "UPDATE ";
+    private static final String UPDATE_CARTITEM_BUTTON = "_CARTITEM SET quantity = ? WHERE ITEMID = ?";
+
     @Override
     public List<CartItem> getCartItems(String username) {
         List<CartItem> cartItems = new ArrayList<CartItem>();
@@ -196,9 +199,20 @@ public class CartItemDaoImpl implements CartItemDao {
     }
 
     @Override
-    public void updateCartItem(CartItem cartItem, String username) {
-        //用cartitemid就可以了然后把所有都存一边
+    public void updateCartItem(String username,String itemId,int quantity) {
+        try {
+            Connection conn = DBUtil.getConnection();
+            PreparedStatement ps = conn.prepareStatement(UPDATE_CARTITEM_TOP+username+UPDATE_CARTITEM_BUTTON);
+            System.out.println(quantity);
+            ps.setInt(1, quantity);
+            ps.setString(2, itemId);
+            //相同的应该不改 但是先直接改
+            ps.executeUpdate();
+            ps.close();
+            conn.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
-
 
 }

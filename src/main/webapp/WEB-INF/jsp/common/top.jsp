@@ -46,7 +46,7 @@
         <div id="Search">
             <div id="SearchContent">
                 <form action="SubmitDataForm" method="post">
-                    <input type="text" name="keyword" size="14">
+                    <input type="search" name="keyword" size="14">
                     <input type="submit" value="Search">
                 </form>
             </div>

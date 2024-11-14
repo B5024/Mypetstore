@@ -1,6 +1,7 @@
 package csu.mypetstoree.web.servlet;
 
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.Iterator;
 import java.util.List;
 
@@ -23,8 +24,8 @@ public class UpdateCartServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         HttpSession session = req.getSession();
-        session.setAttribute("cart", new Cart());
-
+        //
+//
         Account account = (Account) session.getAttribute("loginAccount");
         String username = account.getUsername();
         catalogService = new CatalogService();
@@ -41,6 +42,8 @@ public class UpdateCartServlet extends HttpServlet {
                 String quantityString = req.getParameter(itemId);
                 int quantity = Integer.parseInt(quantityString);
                 cart.setQuantityByItemId(itemId, quantity);
+                //写入对应的方法当中
+                catalogService.UpdateCartItem(username,itemId,quantity);
                 if (quantity < 1) {
                     cartItems.remove();
                 }
@@ -48,10 +51,11 @@ public class UpdateCartServlet extends HttpServlet {
             }
         }
 
+        session.setAttribute("cart", cart);
+
 //        for (CartItem cartItem : cartItemList) {
 //            String itemId = cartItem.getItem().getItemId();
 //        }
-
-        req.getRequestDispatcher("/WEB-INF/jsp/cart/cart.jsp").forward(req, resp);
+        req.getRequestDispatcher(CART_FORM).forward(req, resp);
     }
 }

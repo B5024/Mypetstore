@@ -13,6 +13,15 @@ public class Cart implements Serializable {
     //这里原本是final
     private List<CartItem> itemList = new ArrayList<CartItem>();
 
+    public Cart() {
+    }
+    public Cart(List<CartItem> cartItems) {
+        this.itemList = cartItems;
+        for (CartItem cartItem : itemList) {
+            itemMap.put(cartItem.getItem().getItemId(),cartItem);
+        }
+    }
+
     public Iterator<CartItem> getCartItems() {
         return itemList.iterator();
     }
@@ -35,13 +44,6 @@ public class Cart implements Serializable {
 
     public boolean containsItemId(String itemId) {
         return itemMap.containsKey(itemId);
-    }
-
-    public void setItemMap(List<CartItem> itemList) {
-//        this.itemMap.clear();
-        for (CartItem cartItem : itemList) {
-            itemMap.put(cartItem.getItem().getItemId(),cartItem);
-        }
     }
 
     public void setCartItemList(List<CartItem> itemList) {

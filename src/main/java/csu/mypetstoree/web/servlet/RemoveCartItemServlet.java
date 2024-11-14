@@ -37,7 +37,6 @@ public class RemoveCartItemServlet extends HttpServlet {
         cart.setCartItemList(catalogService.getCartItemList(username));
 
 
-
         //删除在数据库中的item
         catalogService.removeItemById(workingItemId,username);
 
@@ -46,7 +45,8 @@ public class RemoveCartItemServlet extends HttpServlet {
         cart.setCartItemList(catalogService.getCartItemList(username));
         session.setAttribute("cart", cart);
 
-        //        Item item = cart.removeItemById(workingItemId);
+//        这里是使用session方法来和删除Items
+//        Item = cart.removeItemById(workingItemId);
 //        System.out.println(item.getItemId());
 //        if (item == null) {
 //            session.setAttribute("errorMsg", "Attempted to remove null CartItem from Cart.");
