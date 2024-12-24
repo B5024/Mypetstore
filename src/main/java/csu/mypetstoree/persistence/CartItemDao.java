@@ -17,5 +17,5 @@ public interface CartItemDao {
 
     void NewCartItemTable(String username);
 
-    void updateCartItem(CartItem cartItem, String username);
+    void updateCartItem(String username,String itemId,int quantity);
 }

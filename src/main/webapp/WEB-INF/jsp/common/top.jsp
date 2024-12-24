@@ -16,7 +16,6 @@
 </head>
 
 <body>
-
     <div id="Head">
         <div id="Logo">
             <div id="LogoContent">
@@ -41,7 +40,10 @@
                 <a href="help.html">?</a>
             </div>
         </div>
-
+<%--        测试代码--%>
+<%--        <div>--%>
+<%--            <a href="testForm"><img align="middle" name="img_cart" src="images/cart.gif" /></a>--%>
+<%--        </div>--%>
         <div id="Search">
             <div id="SearchContent">
                 <form action="SubmitDataForm" method="post">

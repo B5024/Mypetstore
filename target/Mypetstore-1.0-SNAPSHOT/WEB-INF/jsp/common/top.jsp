@@ -16,7 +16,6 @@
 </head>
 
 <body>
-
     <div id="Head">
         <div id="Logo">
             <div id="LogoContent">
@@ -41,7 +40,10 @@
                 <a href="help.html">?</a>
             </div>
         </div>
-
+<%--        测试代码--%>
+<%--        <div>--%>
+<%--            <a href="testForm"><img align="middle" name="img_cart" src="images/cart.gif" /></a>--%>
+<%--        </div>--%>
         <div id="Search">
             <div id="SearchContent">
                 <form action="SubmitDataForm" method="post">
@@ -49,13 +51,13 @@
                     <input type="submit" value="Search">
                 </form>
                 <div id="productAutoComplete">
-                    <ul id="productAutoList">
-                        <li class="productAutoItem">Labrador Retriever</li>
-                        <li class="productAutoItem">Golden Retriever</li>
-                        <li class="productAutoItem">Amazon Parrot</li>
-                        <li class="productAutoItem">Rattlesnake</li>
-                        <li class="productAutoItem">Tiger Shark</li>
-                    </ul>
+<%--                    <ul id="productAutoList">--%>
+<%--                        <li class="productAutoItem">Labrador Retriever</li>--%>
+<%--                        <li class="productAutoItem">Golden Retriever</li>--%>
+<%--                        <li class="productAutoItem">Amazon Parrot</li>--%>
+<%--                        <li class="productAutoItem">Rattlesnake</li>--%>
+<%--                        <li class="productAutoItem">Tiger Shark</li>--%>
+<%--                    </ul>--%>
                 </div>
             </div>
         </div>

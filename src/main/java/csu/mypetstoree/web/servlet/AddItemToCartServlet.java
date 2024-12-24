@@ -35,9 +35,7 @@ public class AddItemToCartServlet extends HttpServlet {
 
             catalogService = new CatalogService();
             List<CartItem> cartItems = catalogService.getCartItemList(username);
-            Cart cart = new Cart();
-            cart.setCartItemList(cartItems);
-            cart.setItemMap(cartItems);
+            Cart cart = new Cart(cartItems);
 
             //如果存在这个商品的话，就增加数量，并把这个商品添加到
             if (cart.containsItemId(workingItemId)) {

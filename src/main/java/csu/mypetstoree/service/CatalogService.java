@@ -14,6 +14,7 @@ import csu.mypetstoree.persistence.impl.CategoryDaoImpl;
 import csu.mypetstoree.persistence.impl.ItemDaoImpl;
 import csu.mypetstoree.persistence.impl.ProductDaoImpl;
 
+import java.math.BigDecimal;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -77,6 +78,14 @@ public class CatalogService {
     }
     public void NewCartItemTable(String username) {
         cartItemDao.NewCartItemTable(username);
+    }
+    public void UpdateCartItem(String username,String itemId, int quantity) {
+        if(quantity == 0) {
+            cartItemDao.removeItemById(itemId,username);
+        }else {
+            System.out.println("Yes");
+            cartItemDao.updateCartItem(username,itemId,quantity);
+        }
     }
 }
 
