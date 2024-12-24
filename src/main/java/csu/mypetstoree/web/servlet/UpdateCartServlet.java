@@ -1,7 +1,6 @@
 package csu.mypetstoree.web.servlet;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Iterator;
 import java.util.List;
 
@@ -35,7 +34,7 @@ public class UpdateCartServlet extends HttpServlet {
         Iterator<CartItem> cartItems = cart.getAllCartItems();
 
         while(cartItems.hasNext()) {
-            CartItem cartItem = (CartItem)cartItems.next();
+            CartItem cartItem = cartItems.next();
             String itemId = cartItem.getItem().getItemId();
 
             try {
@@ -44,6 +43,8 @@ public class UpdateCartServlet extends HttpServlet {
                 cart.setQuantityByItemId(itemId, quantity);
                 //写入对应的方法当中
                 catalogService.UpdateCartItem(username,itemId,quantity);
+
+                //这里已经更新数据了
                 if (quantity < 1) {
                     cartItems.remove();
                 }
@@ -51,11 +52,10 @@ public class UpdateCartServlet extends HttpServlet {
             }
         }
 
-        session.setAttribute("cart", cart);
+        System.out.println("完成更新");
 
-//        for (CartItem cartItem : cartItemList) {
-//            String itemId = cartItem.getItem().getItemId();
-//        }
+        session.setAttribute("cart", cart);
+//        这里的cart还是设置 但是不转发？ 然后使用
         req.getRequestDispatcher(CART_FORM).forward(req, resp);
     }
 }

@@ -55,6 +55,13 @@
             <version>2.0.1</version>
         </dependency>
 
+<!--        xstream转换-->
+        <dependency>
+            <groupId>com.thoughtworks.xstream</groupId>
+            <artifactId>xstream</artifactId>
+            <version>1.4.10</version>
+        </dependency>
+
 
 
     </dependencies>

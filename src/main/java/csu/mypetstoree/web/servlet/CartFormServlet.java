@@ -32,7 +32,6 @@ public class CartFormServlet extends HttpServlet {
             catalogService = new CatalogService();
             List<CartItem> cartItems = catalogService.getCartItemList(username);
             Cart cart = new Cart(cartItems);
-
             //这里可以改进 只需要quantity就可以了
             session.setAttribute("cart", cart);
 //            System.out.println(cart.getCartItemList());

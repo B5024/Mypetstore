@@ -23,7 +23,7 @@ public class LogsDaoImpl implements LogsDao {
             if(rows == 1){
                 System.out.println("Login logs Insert succeed");
             }else {
-                System.out.println("Login logs Insert fail");
+                System.out.println("Login logs Insert f ail");
             }
             DBUtil.closePreparedStatement(statement);
             DBUtil.closeConnection(connection);
