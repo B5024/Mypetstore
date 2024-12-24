@@ -238,5 +238,15 @@
     </servlet-mapping>
 
 
+    <servlet>
+        <servlet-name>ProductAutoCompleteServlet</servlet-name>
+        <servlet-class>csu.mypetstoree.web.servlet.ProductAutoCompleteServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ProductAutoCompleteServlet</servlet-name>
+        <url-pattern>/productAuto</url-pattern>
+    </servlet-mapping>
+
+
 </web-app>
 

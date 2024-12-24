@@ -12,6 +12,7 @@
     <meta charset="UTF-8">
     <title>JPetStore Demo</title>
     <link rel="StyleSheet" href="css/jpetstore.css" type="text/css" media="screen"/>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -44,9 +45,18 @@
         <div id="Search">
             <div id="SearchContent">
                 <form action="SubmitDataForm" method="post">
-                    <input type="text" name="keyword" size="14">
+                    <input type="text" name="keyword" size="14" id="keyword">
                     <input type="submit" value="Search">
                 </form>
+                <div id="productAutoComplete">
+                    <ul id="productAutoList">
+<%--                        <li class="productAutoItem">Labrador Retriever</li>--%>
+<%--                        <li class="productAutoItem">Golden Retriever</li>--%>
+<%--                        <li class="productAutoItem">Amazon Parrot</li>--%>
+<%--                        <li class="productAutoItem">Rattlesnake</li>--%>
+<%--                        <li class="productAutoItem">Tiger Shark</li>--%>
+                    </ul>
+                </div>
             </div>
         </div>
 
@@ -62,4 +72,3 @@
                 <a href="categoryForm?categoryId=BIRDS"><img src="images/sm_birds.gif" /></a>
             </div>
     </div>
-    <div id="Content">

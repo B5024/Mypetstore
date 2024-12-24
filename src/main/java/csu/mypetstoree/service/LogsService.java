@@ -24,7 +24,7 @@ public class LogsService {
         Logs cartLog = new Logs(username,currentDate,action,itemId);
 
         LogsDao logsDao = new LogsDaoImpl();
-//        logsDao.insertCartLogs(cartLog);
+        logsDao.insertCartLogs(cartLog);
     }
 
     public static void main(String[] args) {
