@@ -12,12 +12,13 @@ $(function(){
     let subTotalVal        = 0.0;
     //要使用id选择器啊。。。
     $('#updateForm').on('submit',function(e){
+        totalCostVal = 0.0;
+        subTotalVal = 0.0;
         e.preventDefault();
         //我们得拿到修改的那个数量 然后在前端修改对应的价格
         $("table tr").slice(1, -1).each(function(){
             quantityVal = parseInt($(this).children("td").eq(4).children("input").val());
-            console.log(quantityVal);
-
+            // console.log(quantityVal);
             //如果数量等于0
             if(quantityVal === 0){
                 //删除这一行
@@ -28,17 +29,18 @@ $(function(){
                 //设置totalCost应该要设置对应的td
                 totalCostVal=quantityVal*listPriceVal;
                 $(this).children("td").eq(6).text("$"+totalCostVal);
-                console.log(totalCostVal)
+                // console.log(totalCostVal)
                 subTotalVal += totalCostVal;
-                console.log(subTotalVal);
+                // console.log(subTotalVal);
             }
         });
         //处理总价 找标签 用选择器 将subTotal使用span圈起来
+
         $("#subTotal").text("Sub Total: $"+subTotalVal);
 
         $.ajax({
             type:'POST',
-            url:'http://localhost:8080/MypetStoree_war_exploded/updateCart',
+            url:'updateCart',
             data:$('#updateForm').serialize(),
             success:function(){
                 console.log('响应成功');

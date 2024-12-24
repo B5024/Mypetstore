@@ -12,6 +12,8 @@ $(function(){
     let subTotalVal        = 0.0;
     //要使用id选择器啊。。。
     $('#updateForm').on('submit',function(e){
+        totalCostVal = 0.0;
+        subTotalVal = 0.0;
         e.preventDefault();
         //我们得拿到修改的那个数量 然后在前端修改对应的价格
         $("table tr").slice(1, -1).each(function(){
@@ -33,11 +35,12 @@ $(function(){
             }
         });
         //处理总价 找标签 用选择器 将subTotal使用span圈起来
+
         $("#subTotal").text("Sub Total: $"+subTotalVal);
 
         $.ajax({
             type:'POST',
-            url:'http://localhost:8080/MypetStoree_war_exploded/updateCart',
+            url:'updateCart',
             data:$('#updateForm').serialize(),
             success:function(){
                 console.log('响应成功');
