@@ -239,6 +239,15 @@
 
 
     <servlet>
+        <servlet-name>TestForm</servlet-name>
+        <servlet-class>csu.mypetstoree.web.servlet.TestForm</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>TestForm</servlet-name>
+        <url-pattern>/testForm</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
         <servlet-name>ProductAutoCompleteServlet</servlet-name>
         <servlet-class>csu.mypetstoree.web.servlet.ProductAutoCompleteServlet</servlet-class>
     </servlet>
@@ -247,15 +256,6 @@
         <url-pattern>/productAuto</url-pattern>
     </servlet-mapping>
 
-
-    <servlet>
-        <servlet-name>TestForm</servlet-name>
-        <servlet-class>csu.mypetstoree.web.servlet.TestForm</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>TestForm</servlet-name>
-        <url-pattern>/testForm</url-pattern>
-    </servlet-mapping>
 
 </web-app>
 

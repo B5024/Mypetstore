@@ -51,13 +51,13 @@
                     <input type="submit" value="Search">
                 </form>
                 <div id="productAutoComplete">
-<%--                    <ul id="productAutoList">--%>
+                    <ul id="productAutoList">
 <%--                        <li class="productAutoItem">Labrador Retriever</li>--%>
 <%--                        <li class="productAutoItem">Golden Retriever</li>--%>
 <%--                        <li class="productAutoItem">Amazon Parrot</li>--%>
 <%--                        <li class="productAutoItem">Rattlesnake</li>--%>
 <%--                        <li class="productAutoItem">Tiger Shark</li>--%>
-<%--                    </ul>--%>
+                    </ul>
                 </div>
             </div>
         </div>
