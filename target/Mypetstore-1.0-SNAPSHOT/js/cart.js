@@ -4,12 +4,12 @@ console.log("link cart.js");
 
 //进入jquery位置
 $(function(){
-    let subPrice = 0;
 
     let quantityVal     = 0.0;
     let listPriceVal    = 0.0;
     let totalCostVal    = 0.0;
     let subTotalVal        = 0.0;
+
     //要使用id选择器啊。。。
     $('#updateForm').on('submit',function(e){
         totalCostVal = 0.0;
@@ -54,6 +54,7 @@ $(function(){
             }
         });
     })
+
 });
 
 
