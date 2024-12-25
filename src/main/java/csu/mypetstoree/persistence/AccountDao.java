@@ -19,4 +19,5 @@ public interface AccountDao {
 
     void updateSignon(Account account);
 
+    boolean isMailExist(String mail);
 }
