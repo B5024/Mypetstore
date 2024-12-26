@@ -1,0 +1,3 @@
+$(function (){
+    $('#birds').mouseenter()
+})
