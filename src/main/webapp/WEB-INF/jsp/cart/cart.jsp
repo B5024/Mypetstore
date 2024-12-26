@@ -59,6 +59,9 @@
                         <td id = "totalCost"><fmt:formatNumber value="${cartItem.total}"
                                               pattern="$#,##0.00" />
                         </td>
+<%--                        <td>--%>
+<%--                            <button class="Button" id="removeBtn" type="button">Remove</button>--%>
+<%--                        </td>--%>
                         <td id="removeBtn">
 <%--                            <button class="Button" id="removeBtn"></button>--%>
                             <a href="removeCartItem?workingItemId=${cartItem.item.itemId}"

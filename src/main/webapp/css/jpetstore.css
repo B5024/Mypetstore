@@ -92,6 +92,15 @@ a:hover {
     color: #69f;
 }
 
+.Button{
+    padding: .3ex;
+    color: #fff;
+    background-color: #005e21;
+    text-decoration: none;
+    font-family: helvetica, tahoma, arial, verdana, sans-serif;
+    font-size: 1.5ex;
+    cursor: pointer;
+}
 a.Button, a.Button:link, a.Button:visited {
     padding: .3ex;
     color: #fff;

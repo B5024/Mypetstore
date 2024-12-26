@@ -33,4 +33,9 @@ public class AccountService {
         AccountDao accountDao = new AccountDaoImpl();
         accountDao.updateSignon(account);
     }
+
+    public static boolean isMailExist(String mail) {
+        AccountDao accountDao = new AccountDaoImpl();
+        return accountDao.isMailExist(mail);
+    }
 }

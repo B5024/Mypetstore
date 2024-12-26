@@ -1,7 +1,7 @@
 console.log("link remove.js");
 
 $(function(){
-    let id = '';
+    let id = "";
     let $cur_tr;
     $('#removeBtn').on('click',function(e1){
         //防止自动跳转
@@ -18,13 +18,16 @@ $(function(){
         //后端对数据库进行删除操作
         $.ajax({
             type: 'GET',
-            url:`removeCartItem?workingItemId=${id}`,
-            success:function(){
+            url : 'removeCartItem',
+            // url:'removeCartItem?workingItemId='+id,
+            data:{ workingItemId : id },
+            success:function(result){
+                console.log(result);
                 console.log("Delete success");
                 alert("商品删除成功");
             },
-            error:function(){
-                console.log("Something bad");
+            error:function(error){
+                console.log(error);
             }
         });
 

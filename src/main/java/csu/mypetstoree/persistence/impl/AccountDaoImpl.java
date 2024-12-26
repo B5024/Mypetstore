@@ -53,27 +53,28 @@ public class AccountDaoImpl implements AccountDao {
             PreparedStatement statement = connection.prepareStatement(GET_ACCOUNT_BY_USERNAME_AND_PASSWORD);
             statement.setString(1, account.getUsername());
             statement.setString(2, account.getPassword());
-             ResultSet resultSet = statement.executeQuery();
-             if(resultSet.next()){
-                 ac = new Account();
-                 ac.setUsername(resultSet.getString("username"));
-                 ac.setEmail(resultSet.getString("email"));
-                 ac.setFirstName(resultSet.getString("firstname"));
-                 ac.setLastName(resultSet.getString("lastname"));
-                 ac.setStatus(resultSet.getString("status"));
-                 ac.setAddress1(resultSet.getString("address1"));
-                 ac.setAddress2(resultSet.getString("address2"));
-                 ac.setCity(resultSet.getString("city"));
-                 ac.setState(resultSet.getString("state"));
-                 ac.setZip(resultSet.getString("zip"));
-                 ac.setCountry(resultSet.getString("country"));
-                 ac.setPhone(resultSet.getString("phone"));
-                 ac.setLanguagePreference(resultSet.getString("languagePreference"));
-                 ac.setFavouriteCategoryId(resultSet.getString("favouriteCategoryId"));
-                 ac.setListOption(resultSet.getInt("listOption") == 1);
-                 ac.setBannerOption(resultSet.getInt("bannerOption") == 1);
-                 ac.setBannerName(resultSet.getString("bannerName"));
-             }
+            ResultSet resultSet = statement.executeQuery();
+            if(resultSet.next()){
+                ac = new Account();
+                ac.setPassword(account.getPassword());
+                ac.setUsername(resultSet.getString("username"));
+                ac.setEmail(resultSet.getString("email"));
+                ac.setFirstName(resultSet.getString("firstname"));
+                ac.setLastName(resultSet.getString("lastname"));
+                ac.setStatus(resultSet.getString("status"));
+                ac.setAddress1(resultSet.getString("address1"));
+                ac.setAddress2(resultSet.getString("address2"));
+                ac.setCity(resultSet.getString("city"));
+                ac.setState(resultSet.getString("state"));
+                ac.setZip(resultSet.getString("zip"));
+                ac.setCountry(resultSet.getString("country"));
+                ac.setPhone(resultSet.getString("phone"));
+                ac.setLanguagePreference(resultSet.getString("languagePreference"));
+                ac.setFavouriteCategoryId(resultSet.getString("favouriteCategoryId"));
+                ac.setListOption(resultSet.getInt("listOption") == 1);
+                ac.setBannerOption(resultSet.getInt("bannerOption") == 1);
+                ac.setBannerName(resultSet.getString("bannerName"));
+            }
             DBUtil.closeResultSet(resultSet);
             DBUtil.closePreparedStatement(statement);
             DBUtil.closeConnection(connection);
@@ -220,6 +221,29 @@ public class AccountDaoImpl implements AccountDao {
     };
 
 
+    @Override
+    public boolean isMailExist(String mail) {
+
+        boolean isExist = false;
+        try {
+            Connection connection = DBUtil.getConnection();
+            PreparedStatement statement = connection.prepareStatement(IS_MAIL_EXIST);
+            statement.setString(1, mail);
+            ResultSet resultSet = statement.executeQuery();
+            if(resultSet.next()){
+                System.out.println("mail exist");
+                isExist = true;
+            }else {
+                System.out.println("mail does not exist");
+            }
+            DBUtil.closePreparedStatement(statement);
+            DBUtil.closeConnection(connection);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return isExist;
+    };
+
     private static final String UPDATE_SIGN_ON = "UPDATE SIGNON SET PASSWORD = ?\n" +
             "    WHERE USERNAME = ?";
 
@@ -303,4 +327,8 @@ public class AccountDaoImpl implements AccountDao {
             "      (?, ?, ?, ?, ?,  ?, ?, ?, ?, ?, ?, ?)";
 
 
+    private static final String IS_MAIL_EXIST = "SELECT\n" +
+            "          EMAIL\n" +
+            "    FROM ACCOUNT\n" +
+            "    WHERE EMAIL = ?\n";
 }
