@@ -43,6 +43,7 @@ public class AddItemToCartServlet extends HttpServlet {
                 //添加数量
                 cart.incrementQuantityByItemId(workingItemId);
                 catalogService.addCartItem(cart.getCartItemById(workingItemId),username);
+                LogsService.insertCartLogs(username,"add",workingItemId);
             } else {
                 //这里把赋值cart提供给前端
                 boolean isInStock = catalogService.isItemInStock(workingItemId);
@@ -56,6 +57,7 @@ public class AddItemToCartServlet extends HttpServlet {
                 cartItem.setQuantity(1);
                 cartItem.setInStock(isInStock);
                 catalogService.addCartItem(cartItem,username);
+                LogsService.insertCartLogs(username,"add",workingItemId);
             }
 
             session.setAttribute("cart", cart);

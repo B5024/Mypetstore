@@ -74,5 +74,4 @@
         <a href="categoryForm?categoryId=BIRDS"><img src="images/sm_birds.gif" /></a>
     </div>
 </div>
-
-
+<div id="Content">
