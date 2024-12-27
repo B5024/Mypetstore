@@ -1,6 +1,10 @@
 
 <%@ include file="../common/top.jsp"%>
 
+<%--<div id="BackLink"><stripes:link--%>
+<%--        beanclass="org.mybatis.jpetstore.web.actions.CatalogActionBean">--%>
+<%--    Return to Main Menu</stripes:link></div>--%>
+
 <div id="BackLink">
     <a href="mainForm">Return to Main Menu</a>
 </div>
@@ -32,10 +36,6 @@
 
                 <c:forEach var="cartItem"
                            items="${sessionScope.cart.cartItems}">
-<%--                    <div class="cartItem" data-listPrice="${cartItem.item.listPrice}">--%>
-
-
-<%--                    </div>--%>
                     <tr>
                         <td>
                             <a href="itemForm?itemId=${cartItem.item.itemId}">${cartItem.item.itemId}</a>
@@ -60,8 +60,10 @@
                                               pattern="$#,##0.00" />
                         </td>
                         <td>
-                            <a href="removeCartItem?workingItemId=${cartItem.item.itemId}"
-                               class="Button">Remove
+                            <a href="#"
+                               class="Button"
+                               id="removeBtn"
+                               data-item-id="${cartItem.item.itemId}">Remove
                             </a>
                         </td>
                     </tr>

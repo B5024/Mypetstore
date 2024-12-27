@@ -13,9 +13,13 @@ public class MailcodeFormServlet extends HttpServlet {
     private static final String FORM = "/WEB-INF/jsp/account/mailcode.jsp";
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String mailFrom = request.getParameter("mailFrom");
+        Boolean isFindPassword = request.getParameter("isFindPassword").equals("true");
         HttpSession session = request.getSession();
-        session.setAttribute("mailFrom", mailFrom);
+        if (isFindPassword) {
+            session.setAttribute("isFindPassword", "true");
+        }else {
+            session.setAttribute("isFindPassword", "false");
+        }
         request.getRequestDispatcher(FORM).forward(request,response);
     }
 

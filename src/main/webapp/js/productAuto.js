@@ -1,3 +1,4 @@
+console.log("link productAuto.js");
 $(function(){
     $('#keyword').on('keyup',function(){
         var keyword = $(this).val();
