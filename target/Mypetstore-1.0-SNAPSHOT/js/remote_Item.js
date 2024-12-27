@@ -1,29 +1,32 @@
 console.log("link remove.js");
 
 $(function(){
-    let id = "";
-    let $cur_tr;
-    let subTotalVal = 0;
-    //总价计算
+
+
     let quantityVal = 0;
     let listPriceVal =0;
     let totalCostVal = 0;
+    let subTotalVal = 0;
+
+    let id = "";
+    let $cur_tr;
     let $SubTotal = $("#subTotal");
 
-    //
+    //删除购物车
     $(document).on('click','#removeBtn',function(e){
         e.preventDefault();
+        //从jsp中得到data数据
         id = $(this).data('item-id')
-        console.log(id);
+        // console.log(id);
 
         //获得当前行的jquery对象
         $cur_tr = $(this).closest('tr');
         //前端删除当前行
         $cur_tr.remove();
 
+        //计算当前总价
         totalCostVal = 0;
         subTotalVal = 0;
-        //改总价 还是得重新计算总价的
         $("table tr").slice(1, -1).each(function(){
             quantityVal = parseInt($(this).children("td").eq(4).children("input").val());
             listPriceVal = parseFloat(($(this).children("td").eq(5).text().trim()).substring(1));
@@ -40,11 +43,12 @@ $(function(){
             url : 'removeCartItem',
             data:{ workingItemId : id },
             success:function(result){
-                console.log(result);
-                console.log("Delete success");
+                // console.log(result);
+                // console.log("Delete success");
                 alert("商品删除成功");
             },
             error:function(error){
+                alert("服务器连接出问题了QAQ");
                 console.log(error);
             }
         });

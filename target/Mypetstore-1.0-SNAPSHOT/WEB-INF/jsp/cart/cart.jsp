@@ -1,13 +1,13 @@
 
 <%@ include file="../common/top.jsp"%>
 
-<div id="BackLink"><stripes:link
-        beanclass="org.mybatis.jpetstore.web.actions.CatalogActionBean">
-    Return to Main Menu</stripes:link></div>
+<%--<div id="BackLink"><stripes:link--%>
+<%--        beanclass="org.mybatis.jpetstore.web.actions.CatalogActionBean">--%>
+<%--    Return to Main Menu</stripes:link></div>--%>
 
-<%--<div id="BackLink">--%>
-<%--    <a href="mainForm">Return to Main Menu</a>--%>
-<%--</div>--%>
+<div id="BackLink">
+    <a href="mainForm">Return to Main Menu</a>
+</div>
 
 <div id="Catalog">
 
@@ -36,10 +36,6 @@
 
                 <c:forEach var="cartItem"
                            items="${sessionScope.cart.cartItems}">
-<%--                    <div class="cartItem" data-listPrice="${cartItem.item.listPrice}">--%>
-
-
-<%--                    </div>--%>
                     <tr>
                         <td>
                             <a href="itemForm?itemId=${cartItem.item.itemId}">${cartItem.item.itemId}</a>
@@ -63,12 +59,7 @@
                         <td id = "totalCost"><fmt:formatNumber value="${cartItem.total}"
                                               pattern="$#,##0.00" />
                         </td>
-<%--                        <td>--%>
-<%--                            <button class="Button" id="removeBtn" type="button">Remove</button>--%>
-<%--                        </td>--%>
                         <td>
-<%--                            <button class="Button" id="removeBtn"></button>--%>
-<%--    removeCartItem?workingItemId=${cartItem.item.itemId}--%>
                             <a href="#"
                                class="Button"
                                id="removeBtn"

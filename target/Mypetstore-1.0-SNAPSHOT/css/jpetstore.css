@@ -5,7 +5,8 @@ body {
     font-size: 2ex;
     color: #333;
     background-color: #444;
-    width:1080px;
+    width:1560px;
+    /*  width:1080px;  */
 }
 
 pre {
@@ -116,7 +117,7 @@ a.Button:hover {
 }
 
 #Logo {
-    width: 33%;
+    width: 33.333%;
     height: 9ex;
     margin: 0ex 0ex 0ex 0ex;
     padding: 0ex 0ex 0ex 0ex;
@@ -137,7 +138,7 @@ body>#Logo {
 }
 
 #Menu {
-    width: 33%;
+    width: 33.333%;
     height: 9ex;
     margin: 0ex 0ex 0ex 0ex;
     padding: 0ex 0ex 0ex 0ex;
@@ -170,7 +171,7 @@ body>#Menu {
 }
 
 #Search {
-    width: 33%;
+    width: 33.333%;
     height: 9ex;
     margin: 0ex 0ex 0ex 0ex;
     padding: 0ex 0ex 0ex 0ex;
@@ -178,7 +179,7 @@ body>#Menu {
     border-style: solid;
     border-color: #ccc;
     float: left;
-    text-align: center;
+    text-align: right;
     background-color: #000;
     color: #eaac00;
     line-height: 9ex;
@@ -202,7 +203,7 @@ body>#Search {
 #QuickLinks {
     text-align: center;
     background-color: #FFF;
-    width: 99%;
+    width: 100%;
 }
 
 #PoweredBy {
@@ -227,7 +228,7 @@ body>#PoweredBy {
 }
 
 #Banner {
-    width: 69%;
+    width: 70%;
     height: 9ex;
     margin: 0ex 0ex 0ex 0ex;
     padding: 0ex 0ex 0ex 0ex;
@@ -250,7 +251,7 @@ body>#Banner {
 #Content {
     margin: 0;
     padding: 0ex 0ex 0ex 0ex;
-    width: 99%;
+    width: 100%;
     color: #333;
     background-color: #FFF;
     border-width: 0;
@@ -282,13 +283,16 @@ body>#Banner {
     float: left;
     background:inherit;
     text-align:center;
-    width: 50%;
+    width: 40%;
 }
 
 #Catalog {
     padding: 1ex;
     background:inherit;
     text-align:center;
+    width: 99%;
+    display: flex;
+    align-items: stretch;
 }
 
 #Catalog input[type="submit"]{
@@ -320,13 +324,13 @@ body>#Banner {
 }
 
 #Cart{
-    width: 69.99%;
+    width: 79.99%;
     float: left;
     background-color:#fff;
 }
 
 #MyList{
-    width: 30%;
+    width: 20%;
     float: left;
     background-color:#ccc;
     text-align:left;

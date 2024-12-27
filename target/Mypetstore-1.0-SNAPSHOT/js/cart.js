@@ -25,7 +25,6 @@ $(function(){
             }
         });
         $("#subTotal").text("Sub Total: $"+subTotalVal);
-
         $.ajax({
             type:'POST',
             url:'updateCart',
