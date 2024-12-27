@@ -5,7 +5,7 @@
     <form action="mailcode" method="post" id="form">
         <p>Please enter new email.</p>
         <div id="feedback"></div>
-        <p>
+        <p>asdf
             Email:<input type="text" name="email" id="email">
         </p>
         <input type="submit" name="mailCode" value="Sent MailCode">
