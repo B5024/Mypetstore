@@ -2,23 +2,23 @@
 
 <div id="Catalog">
 
-    <form action="signOn" method="post" id="form">
+    <form action="signOn" method="post">
         <p>Please enter your username and password.</p>
-        <div id="feedback"></div>
+        <c:if test="${requestScope.signOnMsg != null}">
+            <p> <font color="red">${requestScope.signOnMsg}</font> </p>
+        </c:if>
         <p>
-            Username:<input type="text" name="username" id="username"> <br />
-            Password:<input type="password" name="password" id="password"> <br />
+            Username:<input type="text" name="username"> <br />
+            Password:<input type="password" name="password"> <br />
             Forget your password?
-            <a href="mailcodeForm?mailFrom=findPassword" id="findPassword">Find password</a>
+            <a href="mailcodeForm?isFindPassword=true">Find password</a>
         </p>
         <input type="submit" name="Login" value="Login">
     </form>
     Need a username and password?
-    <a href="mailcodeForm?mailFrom=register" id="register">Register Now!</a>
+    <a href="mailcodeForm?isFindPassword=false">Register Now!</a>
 
 </div>
-
-<script src="js/check-signon.js"></script>
 
 <%@ include file="../common/bottom.jsp"%>
 
