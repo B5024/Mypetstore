@@ -38,7 +38,7 @@
                            items="${sessionScope.cart.cartItems}">
                     <tr>
                         <td>
-                            <input type="checkbox" data-item-id=${cartItem.item.itemId} id="choose">
+                            <input type="checkbox" value="${cartItem.item.itemId}">
                             <a href="itemForm?itemId=${cartItem.item.itemId}">${cartItem.item.itemId}</a>
                         </td>
                         <td>${cartItem.item.product.productId}</td>
@@ -86,8 +86,10 @@
 
 
         <c:if test="${sessionScope.cart.numberOfItems > 0}">
+<%--            newOrder--%>
             <a href="newOrderForm"
-                                                      class="Button">Proceed to Checkout
+               class="Button"
+               id="checkoutBtn">Proceed to Checkout
 </a>
 </c:if>
 </div>
