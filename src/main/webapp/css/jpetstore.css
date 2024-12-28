@@ -92,15 +92,20 @@ a, a:visited, a:link {
 a:hover {
     color: #69f;
 }
-
-.Button{
+.quantity{
+    display: inline-block;
+    width:100px
+}
+a.add_delete_Button{
     padding: .3ex;
     color: #fff;
     background-color: #005e21;
     text-decoration: none;
     font-family: helvetica, tahoma, arial, verdana, sans-serif;
     font-size: 1.5ex;
-    cursor: pointer;
+    width: 20px;
+    display: inline-block;
+    text-align: center;
 }
 a.Button, a.Button:link, a.Button:visited {
     padding: .3ex;
@@ -288,11 +293,11 @@ body>#Banner {
 
 #Catalog {
     padding: 1ex;
-    background:inherit;
+    background:#FFFFFF;
     text-align:center;
     width: 99%;
-    display: flex;
-    align-items: stretch;
+    /*display: flex;*/
+    /*align-items: stretch;*/
 }
 
 #Catalog input[type="submit"]{
@@ -335,23 +340,23 @@ body>#Banner {
     background-color:#ccc;
     text-align:left;
 }
-body>#WelcomeContent {
+#WelcomeContent {
     margin: 0;
     padding: 0ex 0ex 0ex 0ex;
-    width: 99%;
-    color: #d13b3b;
-    background-color: #472a2a;
+    width: 100%;
+    color: #000;
+    background-color: white;
     border-width: 0;
-    text-align: center;
+    text-align: left;
 }
 
 #productAutoComplete {
     background: #ccc;
     position: relative;
-    top: -29px;
-    left: 84px;
-    width: 189px;
-    display:none;
+    top: -23.6px;
+    left: 174.2px;
+    width: 171.8px;
+    display: none;
 }
 
 #productAutoList{
