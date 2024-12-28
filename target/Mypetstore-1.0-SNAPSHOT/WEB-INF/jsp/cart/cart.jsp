@@ -38,6 +38,7 @@
                            items="${sessionScope.cart.cartItems}">
                     <tr>
                         <td>
+                            <input type="checkbox" data-item-id=${cartItem.item.itemId} id="choose">
                             <a href="itemForm?itemId=${cartItem.item.itemId}">${cartItem.item.itemId}</a>
                         </td>
                         <td>${cartItem.item.product.productId}</td>
@@ -86,21 +87,23 @@
 
         <c:if test="${sessionScope.cart.numberOfItems > 0}">
             <a href="newOrderForm"
-               class="Button">Proceed to Checkout
-            </a>
-        </c:if>
-    </div>
-
-    <div id="MyList">
-        <c:if test="${sessionScope.loginAccount != null}">
-            <c:if test="${!empty sessionScope.loginAccount.listOption}">
-                    <%@ include file="includeMyList.jsp"%>
-            </c:if>
-        </c:if>
-    </div>
-
-    <div id="Separator">&nbsp;</div>
+                                                      class="Button">Proceed to Checkout
+</a>
+</c:if>
 </div>
 
+<div id="MyList">
+    <c:if test="${sessionScope.loginAccount != null}">
+        <c:if test="${!empty sessionScope.loginAccount.listOption}">
+            <%@ include file="includeMyList.jsp"%>
+        </c:if>
+    </c:if>
+</div>
 
+<div id="Separator">&nbsp;</div>
+</div>
+
+<script src="./js/cart.js?version=0.0.2"></script>
+<script src="./js/remote_Item.js?version=0.0.1"></script>
+<script src="./js/chooseItem.js"></script>
 <%@ include file="../common/bottom.jsp"%>

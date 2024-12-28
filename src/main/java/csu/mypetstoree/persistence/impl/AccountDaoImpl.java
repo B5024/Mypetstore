@@ -53,28 +53,28 @@ public class AccountDaoImpl implements AccountDao {
             PreparedStatement statement = connection.prepareStatement(GET_ACCOUNT_BY_USERNAME_AND_PASSWORD);
             statement.setString(1, account.getUsername());
             statement.setString(2, account.getPassword());
-            ResultSet resultSet = statement.executeQuery();
-            if(resultSet.next()){
-                ac = new Account();
-                ac.setPassword(account.getPassword());
-                ac.setUsername(resultSet.getString("username"));
-                ac.setEmail(resultSet.getString("email"));
-                ac.setFirstName(resultSet.getString("firstname"));
-                ac.setLastName(resultSet.getString("lastname"));
-                ac.setStatus(resultSet.getString("status"));
-                ac.setAddress1(resultSet.getString("address1"));
-                ac.setAddress2(resultSet.getString("address2"));
-                ac.setCity(resultSet.getString("city"));
-                ac.setState(resultSet.getString("state"));
-                ac.setZip(resultSet.getString("zip"));
-                ac.setCountry(resultSet.getString("country"));
-                ac.setPhone(resultSet.getString("phone"));
-                ac.setLanguagePreference(resultSet.getString("languagePreference"));
-                ac.setFavouriteCategoryId(resultSet.getString("favouriteCategoryId"));
-                ac.setListOption(resultSet.getInt("listOption") == 1);
-                ac.setBannerOption(resultSet.getInt("bannerOption") == 1);
-                ac.setBannerName(resultSet.getString("bannerName"));
-            }
+             ResultSet resultSet = statement.executeQuery();
+             if(resultSet.next()){
+                 ac = new Account();
+                 ac.setPassword(account.getPassword());
+                 ac.setUsername(resultSet.getString("username"));
+                 ac.setEmail(resultSet.getString("email"));
+                 ac.setFirstName(resultSet.getString("firstname"));
+                 ac.setLastName(resultSet.getString("lastname"));
+                 ac.setStatus(resultSet.getString("status"));
+                 ac.setAddress1(resultSet.getString("address1"));
+                 ac.setAddress2(resultSet.getString("address2"));
+                 ac.setCity(resultSet.getString("city"));
+                 ac.setState(resultSet.getString("state"));
+                 ac.setZip(resultSet.getString("zip"));
+                 ac.setCountry(resultSet.getString("country"));
+                 ac.setPhone(resultSet.getString("phone"));
+                 ac.setLanguagePreference(resultSet.getString("languagePreference"));
+                 ac.setFavouriteCategoryId(resultSet.getString("favouriteCategoryId"));
+                 ac.setListOption(resultSet.getInt("listOption") == 1);
+                 ac.setBannerOption(resultSet.getInt("bannerOption") == 1);
+                 ac.setBannerName(resultSet.getString("bannerName"));
+             }
             DBUtil.closeResultSet(resultSet);
             DBUtil.closePreparedStatement(statement);
             DBUtil.closeConnection(connection);
