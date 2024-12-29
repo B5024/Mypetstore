@@ -2,23 +2,26 @@
 
 <div id="Catalog">
 
-    <form action="mailcode" method="post">
+    <form action="mailcode" method="post" id="form">
         <p>Please enter your email.</p>
-        <c:if test="${requestScope.mailcodeMsg != null}">
-            <p> <font color="red">${requestScope.mailcodeMsg}</font> </p>
-        </c:if>
+        <div id="feedback"></div>
         <p>
-            Email:<input type="text" name="email">
+            Email:<input type="text" name="email" id="email">
         </p>
         <input type="submit" name="mailCode" value="Sent MailCode">
     </form>
-    <c:if test="${sessionScope.isFindPassword == 'false'}">
-        Already have an account?
+
+    <c:if test="${sessionScope.mailFrom == 'register'}">
+        <p>Already have an account?</p>
+        <a href="signOnForm">Sign In!</a>
     </c:if>
-    <c:if test="${sessionScope.isFindPassword == 'true'}">
-        Remember your password?
+    <c:if test="${sessionScope.mailFrom == 'findPassword'}">
+        <p>Remember your password?</p>
+        <a href="signOnForm">Sign In!</a>
     </c:if>
-    <a href="signOnForm">Sign In!</a>
+
 </div>
+
+<script src="js/check-mail.js"></script>
 
 <%@ include file="../common/bottom.jsp"%>

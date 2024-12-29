@@ -71,6 +71,16 @@
 
 
     <servlet>
+        <servlet-name>ProductDescServlet</servlet-name>
+        <servlet-class>csu.mypetstoree.web.servlet.ProductDescServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ProductDescServlet</servlet-name>
+        <url-pattern>/productDesc</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet>
         <servlet-name>ProductFormServlet</servlet-name>
         <servlet-class>csu.mypetstoree.web.servlet.ProductFormServlet</servlet-class>
     </servlet>
