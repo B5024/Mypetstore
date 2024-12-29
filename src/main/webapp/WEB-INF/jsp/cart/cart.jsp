@@ -1,6 +1,10 @@
 
 <%@ include file="../common/top.jsp"%>
 
+<%--<div id="BackLink"><stripes:link--%>
+<%--        beanclass="org.mybatis.jpetstore.web.actions.CatalogActionBean">--%>
+<%--    Return to Main Menu</stripes:link></div>--%>
+
 <div id="BackLink">
     <a href="mainForm">Return to Main Menu</a>
 </div>
@@ -32,12 +36,9 @@
 
                 <c:forEach var="cartItem"
                            items="${sessionScope.cart.cartItems}">
-<%--                    <div class="cartItem" data-listPrice="${cartItem.item.listPrice}">--%>
-
-
-<%--                    </div>--%>
                     <tr>
                         <td>
+                            <input type="checkbox" value="${cartItem.item.itemId}">
                             <a href="itemForm?itemId=${cartItem.item.itemId}">${cartItem.item.itemId}</a>
                         </td>
                         <td>${cartItem.item.product.productId}</td>
@@ -60,8 +61,10 @@
                                               pattern="$#,##0.00" />
                         </td>
                         <td>
-                            <a href="removeCartItem?workingItemId=${cartItem.item.itemId}"
-                               class="Button">Remove
+                            <a href="#"
+                               class="Button"
+                               id="removeBtn"
+                               data-item-id="${cartItem.item.itemId}">Remove
                             </a>
                         </td>
                     </tr>
@@ -83,22 +86,26 @@
 
 
         <c:if test="${sessionScope.cart.numberOfItems > 0}">
+<%--            newOrder--%>
             <a href="newOrderForm"
-               class="Button">Proceed to Checkout
-            </a>
-        </c:if>
-    </div>
-
-    <div id="MyList">
-        <c:if test="${sessionScope.loginAccount != null}">
-            <c:if test="${!empty sessionScope.loginAccount.listOption}">
-                    <%@ include file="includeMyList.jsp"%>
-            </c:if>
-        </c:if>
-    </div>
-
-    <div id="Separator">&nbsp;</div>
+               class="Button"
+               id="checkoutBtn">Proceed to Checkout
+</a>
+</c:if>
 </div>
 
+<div id="MyList">
+    <c:if test="${sessionScope.loginAccount != null}">
+        <c:if test="${!empty sessionScope.loginAccount.listOption}">
+            <%@ include file="includeMyList.jsp"%>
+        </c:if>
+    </c:if>
+</div>
 
+<div id="Separator">&nbsp;</div>
+</div>
+
+<script src="./js/cart.js?version=0.0.2"></script>
+<script src="./js/remote_Item.js?version=0.0.1"></script>
+<script src="./js/chooseItem.js"></script>
 <%@ include file="../common/bottom.jsp"%>

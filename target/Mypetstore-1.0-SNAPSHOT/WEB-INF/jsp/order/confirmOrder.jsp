@@ -112,10 +112,10 @@
             </tr>
         </table>
 
-        <input type="submit" name="confirmOrder" value="Confirm" />
+        <input type="submit" name="confirmOrder" value="Confirm" id="confirmBtn" />
 
     </form>
 
 </div>
-
+<script src="./js/chooseItem.js"></script>
 <%@ include file="../common/bottom.jsp"%>

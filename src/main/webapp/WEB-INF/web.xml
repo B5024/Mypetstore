@@ -147,33 +147,6 @@
         <url-pattern>/mailcode</url-pattern>
     </servlet-mapping>
 
-    <servlet>
-        <servlet-name>isMailExistServlet</servlet-name>
-        <servlet-class>csu.mypetstoree.web.servlet.isMailExistServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>isMailExistServlet</servlet-name>
-        <url-pattern>/isMailExist</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
-        <servlet-name>ChangeMailFormServlet</servlet-name>
-        <servlet-class>csu.mypetstoree.web.servlet.ChangeMailFormServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>ChangeMailFormServlet</servlet-name>
-        <url-pattern>/changeMailForm</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
-        <servlet-name>ChangeMailServlet</servlet-name>
-        <servlet-class>csu.mypetstoree.web.servlet.ChangeMailServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>ChangeMailServlet</servlet-name>
-        <url-pattern>/changeMail</url-pattern>
-    </servlet-mapping>
-
 
     <servlet>
         <servlet-name>FindPasswordFormServlet</servlet-name>
@@ -291,6 +264,15 @@
     <servlet-mapping>
         <servlet-name>ProductAutoCompleteServlet</servlet-name>
         <url-pattern>/productAuto</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>commitCartServlet</servlet-name>
+        <servlet-class>csu.mypetstoree.web.servlet.commitCartServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>commitCartServlet</servlet-name>
+        <url-pattern>/commitCart</url-pattern>
     </servlet-mapping>
 
 

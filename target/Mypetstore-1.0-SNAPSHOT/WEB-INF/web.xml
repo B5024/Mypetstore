@@ -293,6 +293,15 @@
         <url-pattern>/productAuto</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>commitCartServlet</servlet-name>
+        <servlet-class>csu.mypetstoree.web.servlet.commitCartServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>commitCartServlet</servlet-name>
+        <url-pattern>/commitCart</url-pattern>
+    </servlet-mapping>
+
 
 </web-app>
 

@@ -159,6 +159,7 @@ public class CartItemDaoImpl implements CartItemDao {
 
     @Override
     public boolean isItemExist( String username,String itemId) {
+
         CatalogService catalogService = new CatalogService();
         try {
             Connection conn = DBUtil.getConnection();
