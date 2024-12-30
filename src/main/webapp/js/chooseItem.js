@@ -53,14 +53,14 @@ $(function(){
         });
         if (loadingCart.length > 0) {
             alert('您即将购买商品：\n'+'        ' + loadingCart.join('|'));
+            newOrder.style.display = 'flex';
+            overlay.style.display='block';
         } else {
             //禁止跳转
             event.preventDefault();
             alert('请至少勾选一个选项才能买单');
             return false; // 阻止链接跳转或表单提交
         }
-        newOrder.style.display = 'flex';
-        overlay.style.display='block';
     })
 
     continueNewOrderButton.addEventListener('click',()=>{
