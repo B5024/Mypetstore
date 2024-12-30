@@ -31,7 +31,7 @@
             <tr>
                 <td>First Name:</td>
                 <td colspan=4>
-                    ${sessionScope.account.billToFirstName}
+                    ${sessionScope.order1.billToFirstName}
                 </td>
             </tr>
             <tr>
@@ -169,5 +169,4 @@
     </form>
 
 </div>
-
 <%@ include file="../common/bottom.jsp"%>

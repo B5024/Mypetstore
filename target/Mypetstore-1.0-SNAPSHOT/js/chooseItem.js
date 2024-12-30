@@ -1,24 +1,45 @@
 console.log("link chooseItem.js");
 $(function(){
+
+    const newOrder = document.getElementById('paymentNewOrder');
+    const confirmOrder = document.getElementById('paymentConfirmOrder');
+    const openNewOrderButton = document.getElementById('openNewOrderButton');
+    const continueNewOrderButton = document.getElementById('continueNewOrderButton');
+    const cancelNewOrderButton = document.getElementById('cancelNewOrderButton');
+    const overlay = document.getElementById('overlay');
+    const confirmOrderButton = document.getElementById('confirmOrderButton');
+
+    const confirmFirstName =document.getElementById('confirmFirstName');
+    const confirmLastName =document.getElementById('confirmLastName');
+    const confirmAddress1 =document.getElementById('confirmAddress1');
+    const confirmAddress2 =document.getElementById('confirmAddress2');
+    const confirmCity =document.getElementById('confirmCity');
+    const confirmState =document.getElementById('confirmState');
+    const confirmZip =document.getElementById('confirmZip');
+    const confirmCountry =document.getElementById('confirmCountry');
+    const confirmShipFirstName =document.getElementById('confirmShipFirstName');
+    const confirmShipLastName =document.getElementById('confirmShipLastName');
+    const confirmShipAddress1 =document.getElementById('confirmShipAddress1');
+    const confirmShipAddress2 =document.getElementById('confirmShipAddress2');
+    const confirmShipCity =document.getElementById('confirmShipCity');
+    const confirmShipState =document.getElementById('confirmShipState');
+    const confirmShipZip =document.getElementById('confirmShipZip');
+    const confirmShipCountry =document.getElementById('confirmShipCountry');
+
     let loadingCart = [];
     let $checkbox;
-    let commit_cart = [];
     //这里要禁止跳转
-    $('#checkoutBtn').on('click',function(event){
+    $('#openNewOrderButton').on('click',function(event){
         //清空数组
         loadingCart =[];
-        let i = 0;
         $("table tr").slice(1, -1).each(function(){
             $checkbox = $(this).children().eq(0).find("input[type='checkbox']");
             if($checkbox.prop('checked')){
                 loadingCart.push($checkbox.val());
             }
         });
-
-        //先这样子
-        commit_cart = JSON.parse(JSON.stringify(loadingCart));
         // 将JSON对象转换为字符串并进行URL编码
-        const commitData = encodeURIComponent(JSON.stringify(commit_cart));
+        const commitData = encodeURIComponent(JSON.stringify(loadingCart));
 
         $.ajax({
             type: 'GET',
@@ -30,45 +51,79 @@ $(function(){
                 console.log('失败');
             }
         });
-
         if (loadingCart.length > 0) {
-            alert('您即将购买商品：' + loadingCart.join('|'));
+            alert('您即将购买商品：\n'+'        ' + loadingCart.join('|'));
         } else {
             //禁止跳转
             event.preventDefault();
             alert('请至少勾选一个选项才能买单');
             return false; // 阻止链接跳转或表单提交
         }
+        newOrder.style.display = 'flex';
+        overlay.style.display='block';
     })
 
-    // $('#confirmBtn').on('click',function(){
-    //     let data = sessionStorage.getItem('commit_cart');
-    //     alert('已勾选的项: ' +data);
-    //     // let allData = $.extend({}, $('#confirmBtn').serializeArray(), data);
-    //     $.ajax({
-    //         type:'POST',
-    //         url:'confirmOrder',
-    //         contentType: 'application/json', // 设置内容类型为JSON
-    //         data: {
-    //             commitData : data
-    //         },
-    //         success:function(){
-    //             console.log('响应成功');
-    //             alert("购物车更新成功");
-    //         },
-    //         error:function (jqXHR, textStatus, errorThrown){
-    //             console.log('AJAX请求失败：' + textStatus + ', 错误信息：' + errorThrown);
-    //             alert("更新失败，请稍后再试");
-    //         }
-    //     });
-    // })
-})
+    continueNewOrderButton.addEventListener('click',()=>{
 
-/*
-* 我们应该是每一次都选择？ 还是说add的时候一次性选择
-* 得到数组
-* 给数据
-* 成交渲染数据
-* 删除购物车对应数据
-*
-* */
+        const firstName = document.getElementById('firstName').value;
+        const lastName = document.getElementById('lastName').value;
+        const Address1 = document.getElementById('Address1').value;
+        const Address2 = document.getElementById('Address2').value;
+        const City = document.getElementById('City').value;
+        const State = document.getElementById('State').value;
+        const Zip = document.getElementById('Zip').value;
+        const Country = document.getElementById('Country').value;
+
+        const shipFirstName = document.getElementById('aFirstName').value;
+        const shipLastName = document.getElementById('aLastName').value;
+        const shipAddress1 = document.getElementById('aAddress1').value;
+        const shipAddress2 = document.getElementById('aAddress2').value;
+        const shipCity = document.getElementById('aCity').value;
+        const shipState = document.getElementById('aState').value;
+        const shipZip = document.getElementById('aZip').value;
+        const shipCountry = document.getElementById('aCountry').value;
+
+        confirmFirstName.textContent=firstName;
+        confirmLastName.textContent=lastName;
+        confirmAddress1.textContent=Address1;
+        confirmAddress2.textContent=Address2;
+        confirmCity.textContent=City;
+        confirmState.textContent=State;
+        confirmZip.textContent=Zip;
+        confirmCountry.textContent=Country;
+
+        confirmShipFirstName.textContent=shipFirstName;
+        confirmShipLastName.textContent=shipLastName;
+        confirmShipAddress1.textContent=shipAddress1;
+        confirmShipAddress2.textContent=shipAddress2;
+        confirmShipCity.textContent=shipCity;
+        confirmShipState.textContent=shipState;
+        confirmShipZip.textContent=shipZip;
+        confirmShipCountry.textContent=shipCountry;
+
+
+        newOrder.style.display = 'none';
+        confirmOrder.style.display = 'flex';
+
+    });
+
+    confirmOrderButton.addEventListener('click', () => {
+        const form =document.getElementById('paymentForm');
+        confirmOrder.style.display = 'none';
+        overlay.style.display='none';
+
+        form.submit();
+    });
+
+    cancelNewOrderButton.addEventListener('click', () => {
+        newOrder.style.display = 'none';
+        overlay.style.display='none';
+    });
+
+    window.addEventListener('click', (event) => {
+        if (event.target === newOrder) {
+            newOrder.style.display = 'none';
+            overlay.style.display='none';
+        }
+    });
+})

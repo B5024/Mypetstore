@@ -14,6 +14,6 @@ public class commitCartServlet extends HttpServlet {
         String commitCartData = req.getParameter("commitCartData");
         HttpSession session = req.getSession();
         session.setAttribute("commitCartData", commitCartData);
-
+        System.out.println(commitCartData);
     }
 }
