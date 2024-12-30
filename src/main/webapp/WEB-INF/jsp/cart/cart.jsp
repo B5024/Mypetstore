@@ -40,7 +40,7 @@
                            items="${sessionScope.cart.cartItems}">
                     <tr>
                         <td>
-                            <input type="checkbox" data-item-id=${cartItem.item.itemId} id="choose">
+                            <input type="checkbox" value="${cartItem.item.itemId}">
                             <a href="itemForm?itemId=${cartItem.item.itemId}">${cartItem.item.itemId}</a>
                         </td>
                         <td>${cartItem.item.product.productId}</td>

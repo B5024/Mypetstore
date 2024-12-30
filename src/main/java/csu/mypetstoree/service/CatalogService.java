@@ -53,19 +53,15 @@ public class CatalogService {
     public List<Product> searchProductList(String keyword) {
         return productDao.searchProductList("%" + keyword.toLowerCase() + "%");
     }
-
     public List<Item> getItemListByProduct(String productId) {
         return itemDao.getItemListByProduct(productId);
     }
-
     public Item getItem(String itemId) {
         return itemDao.getItem(itemId);
     }
-
     public boolean isItemInStock(String itemId) {
         return itemDao.getInventoryQuantity(itemId) > 0;
     }
-
     public List<CartItem> getCartItemList(String username) {
         return cartItemDao.getCartItems(username);
     }
@@ -85,6 +81,9 @@ public class CatalogService {
             System.out.println("Yes");
             cartItemDao.updateCartItem(username,itemId,quantity);
         }
+    }
+    public CartItem GetCartItemById(String username,String itemId) {
+        return cartItemDao.getCartItem(username,itemId);
     }
 }
 
