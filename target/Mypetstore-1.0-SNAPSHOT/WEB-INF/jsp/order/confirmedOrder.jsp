@@ -31,7 +31,7 @@
             <tr>
                 <td>First Name:</td>
                 <td colspan=4>
-                    ${sessionScope.order1.billToFirstName}
+                    ${sessionScope.account.billToFirstName}
                 </td>
             </tr>
             <tr>
