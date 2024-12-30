@@ -19,14 +19,17 @@ import java.util.List;
 public class ConfirmOrderServlet extends HttpServlet {
     private CatalogService catalogService = new CatalogService();
     public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
-        HttpSession session = req.getSession();
 
-        Account account = (Account) session.getAttribute("loginAccount");
-        String username = account.getUsername();
+        //分配内存
+        HttpSession session = req.getSession();
         catalogService = new CatalogService();
 
+        //获得account
+        Account account = (Account) session.getAttribute("loginAccount");
+        String username = account.getUsername();
+
+        //从session中获取提交的订单数据
         String commitCartData = session.getAttribute("commitCartData").toString();
-        System.out.println("在commitCartServlet成功得到"+commitCartData);
 
         // 将字符串转换为JSONArray对象
         JSONArray jsonArray = new JSONArray(commitCartData);
@@ -40,9 +43,11 @@ public class ConfirmOrderServlet extends HttpServlet {
         }
         session.setAttribute("cartItems", cartItems);
 
-        //总价重新计算
+        //重新计算总价
         Cart cart = new Cart(cartItems);
         session.setAttribute("ChooseLastTotal", cart.getSubTotal());
+
+        //删除特定的商品
         for (CartItem cartItem1 : cartItems) {
             catalogService.removeItemById(cartItem1.getItem().getItemId(),username);
         }

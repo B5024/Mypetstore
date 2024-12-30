@@ -117,5 +117,4 @@
     </form>
 
 </div>
-<script src="./js/chooseItem.js"></script>
 <%@ include file="../common/bottom.jsp"%>

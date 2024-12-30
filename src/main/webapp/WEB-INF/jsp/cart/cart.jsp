@@ -53,7 +53,7 @@
                                    value="${cartItem.quantity}"
                                    id   ="quantity">
                         </td>
-                        <td id = "listPrice"><fmt:formatNumber value="${cartItem.item.listPrice}"
+                        <td id><fmt:formatNumber value="${cartItem.item.listPrice}"
                                               pattern="$#,##0.00"
                                               />
                         </td>
