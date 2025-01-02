@@ -2,9 +2,10 @@
 
 <div id="Catalog">
 
+    <hr>
     <form action="signOn" method="post" id="form">
         <p>Please enter your username and password.</p>
-        <div id="feedback"></div>
+        <div id="feedback" class="feedback"><span>    </span></div>
         <p>
             Username:<input type="text" name="username" id="username"> <br />
             Password:<input type="password" name="password" id="password"> <br />
@@ -13,6 +14,8 @@
         </p>
         <input type="submit" name="Login" value="Login">
     </form>
+
+    <hr>
     Need a username and password?
     <a href="mailcodeForm?mailFrom=register" id="register">Register Now!</a>
 
