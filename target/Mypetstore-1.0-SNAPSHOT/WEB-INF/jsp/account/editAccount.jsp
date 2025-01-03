@@ -8,7 +8,7 @@
         </c:if>
 
         <h3>User Information</h3>
-        <div id="feedback_User"></div>
+        <div id="feedback_User" class="feedback"></div>
 
         <table>
             <tr>
@@ -25,7 +25,7 @@
             </tr>
         </table>
         <h3>Account Information</h3>
-        <div id="feedback_Account"></div>
+        <div id="feedback_Account" class="feedback"></div>
 
         <table id="account_information">
             <tr>

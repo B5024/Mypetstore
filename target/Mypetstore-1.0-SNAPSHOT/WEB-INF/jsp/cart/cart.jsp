@@ -5,11 +5,14 @@
 <%--        beanclass="org.mybatis.jpetstore.web.actions.CatalogActionBean">--%>
 <%--    Return to Main Menu</stripes:link></div>--%>
 
-<div id="BackLink">
-    <a href="mainForm">Return to Main Menu</a>
+<div style="display: flex">
+    <p style="background-color: white; width: 88%">    </p>
+    <div id="BackLink" >
+        <a href="mainForm">Return to Main Menu</a>
+    </div>
 </div>
 
-<div id="overlay" class="overlay"></div>
+<div id="overlay" class="overlay">   </div>
 
 <div id="Catalog">
 
@@ -297,15 +300,16 @@
         </div>
 
     </div>
+    <div id="MyList">
+        <c:if test="${sessionScope.loginAccount != null}">
+            <c:if test="${!empty sessionScope.loginAccount.listOption}">
+                <%@ include file="includeMyList.jsp"%>
+            </c:if>
+        </c:if>
+    </div>
+
 </div>
 
-<div id="MyList">
-    <c:if test="${sessionScope.loginAccount != null}">
-        <c:if test="${!empty sessionScope.loginAccount.listOption}">
-            <%@ include file="includeMyList.jsp"%>
-        </c:if>
-    </c:if>
-</div>
 
 <div id="Separator">&nbsp;</div>
 </div>

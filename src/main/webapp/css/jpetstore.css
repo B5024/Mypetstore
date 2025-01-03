@@ -295,9 +295,9 @@ body>#Banner {
     padding: 1ex;
     background:#FFFFFF;
     text-align:center;
-    width: 99%;
-    /*display: flex;*/
-    /*align-items: stretch;*/
+    width: 99.05%;
+    display: flex;
+    align-items: stretch;
 }
 
 #Catalog input[type="submit"]{
@@ -326,6 +326,8 @@ body>#Banner {
     border-width: .1ex 0ex .1ex 0px;
     border-style: solid;
     border-color: #000;
+    width: 12%;
+    background: white;
 }
 
 #Cart{

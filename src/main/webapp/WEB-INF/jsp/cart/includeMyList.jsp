@@ -10,3 +10,6 @@
   </ul>
 
 </c:if>
+<c:if test="${empty sessionScope.myList}">
+  <p>You have no favorite pets saved.</p>
+</c:if>

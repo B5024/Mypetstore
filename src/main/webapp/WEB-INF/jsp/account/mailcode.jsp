@@ -4,7 +4,7 @@
 
     <form action="mailcode" method="post" id="form">
         <p>Please enter your email.</p>
-        <div id="feedback"></div>
+        <div id="feedback" class="feedback"></div>
         <p>
             Email:<input type="text" name="email" id="email">
         </p>
