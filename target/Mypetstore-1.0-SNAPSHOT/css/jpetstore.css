@@ -296,8 +296,8 @@ body>#Banner {
     background:#FFFFFF;
     text-align:center;
     width: 99.05%;
-    display: flex;
-    align-items: stretch;
+    /*display: flex;*/
+    /*align-items: stretch;*/
 }
 
 #Catalog input[type="submit"]{
@@ -414,4 +414,9 @@ body>#Banner {
 }
 .feedback{
     color: rgb(255,71,78);
+}
+
+.cart_flex{
+    display: flex;
+    align-items: stretch;
 }

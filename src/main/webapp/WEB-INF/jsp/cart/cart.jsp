@@ -8,7 +8,7 @@
 
 <div id="overlay" class="overlay">   </div>
 
-<div id="Catalog">
+<div id="Catalog" class="cart_flex">
 
     <div id="Cart">
 
