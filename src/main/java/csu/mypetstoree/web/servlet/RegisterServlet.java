@@ -10,6 +10,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 public class RegisterServlet extends HttpServlet {
 
@@ -58,92 +59,33 @@ public class RegisterServlet extends HttpServlet {
         catalogService = new CatalogService();
         catalogService.NewCartItemTable(username);
 
-        if (!validateRegistration()){
-            req.setAttribute("registerMsg", Msg );
-            req.getRequestDispatcher(REGISTER_FORM).forward(req, resp);
-        }
-        else {
-            Account account = new Account(username,password,email,firstname,lastname,addr1,addr2,city,state
-            ,zip,country,phone);
-            AccountService.addAccount(account);
-            resp.sendRedirect("signOnForm");
-        }
+        Account account = new Account(username,password,email,firstname,lastname,addr1,addr2,city,state
+                ,zip,country,phone);
+        AccountService.addAccount(account);
+        resp.sendRedirect("signOnForm");
     }
 
-    private boolean validateRegistration() {
-        if (firstname == null || firstname.isEmpty()) {
-            Msg = "First name is required";
-            return false;
-        }
-        if (lastname == null || lastname.isEmpty()) {
-            Msg = "Last name is required";
-            return false;
-        }
-        if (emailcode.isEmpty() || !emailcode.equals(session.getAttribute("emailcode").toString())) {
-            Msg = "Email Code does not match";
-            return false;
-        }
-        if (username == null || username.isEmpty()) {
-            Msg = "Username is required";
-            return false;
-        }
-        if (password == null || password.isEmpty()) {
-            Msg = "Password is required";
-            return false;
-        }
-        if (confirmPassword == null || !confirmPassword.equals(password)) {
-            Msg = "Confirm password does not match";
-        }
-        if (!containsBothLettersAndNumbers(password)) {
-            Msg = "Password should have at least one letter and one number";
-            return false;
-        }
-        if (addr1 == null || addr1.isEmpty()) {
-            Msg = "Address Line 1 is required";
-            return false;
-        }
-        if (city == null || city.isEmpty()) {
-            Msg = "City is required";
-            return false;
-        }
-        if (state == null || state.isEmpty()) {
-            Msg = "State is required";
-            return false;
-        }
-        if (zip == null || zip.isEmpty()) {
-            Msg = "Zip Code is required";
-            return false;
-        }
-        if (country == null || country.isEmpty()) {
-            Msg = "Country is required";
-            return false;
-        }
-        if (phone == null || phone.isEmpty()) {
-            Msg = "Phone number is required";
-            return false;
-        }
-        return true;
-    }
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String emailcode = req.getParameter("emailcode");
+        String username = req.getParameter("username");
+        HttpSession session = req.getSession();
+        String emailcode2 = session.getAttribute("emailcode").toString();
 
-    private boolean isValidEmail(String email) {
-        String emailRegex = "^[A-Za-z0-9+_.-]+@(.+)$";
-        return email.matches(emailRegex);
-    }
+        resp.setContentType("text/plain");
+        PrintWriter out = resp.getWriter();
 
-    private boolean containsBothLettersAndNumbers(String s) {
-        boolean hasLetter = false;
-        boolean hasDigit = false;
-
-        for (char c : s.toCharArray()) {
-            if (Character.isLetter(c)) {
-                hasLetter = true;
-            } else if (Character.isDigit(c)) {
-                hasDigit = true;
-            }
-            if (hasLetter && hasDigit) {
-                return true;
-            }
+        Account account = AccountService.getAccountByUsername(username);
+        if (account != null) {
+            out.print("exist");
+        }else {
+            out.print("not exist");
         }
-        return false;
+
+        if (emailcode.equals(emailcode2)) {
+            out.print(":match");
+        }else {
+            out.print(":not match");
+        }
     }
 }

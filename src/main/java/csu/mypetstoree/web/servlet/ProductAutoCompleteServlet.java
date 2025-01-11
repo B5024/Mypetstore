@@ -28,3 +28,4 @@ public class ProductAutoCompleteServlet extends HttpServlet {
         out.println(result);
     }
 }
+

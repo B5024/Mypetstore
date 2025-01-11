@@ -41,6 +41,7 @@ public class EditAccountServlet extends HttpServlet {
         Account loginAccount = (Account) session.getAttribute("loginAccount");
 
         this.username = loginAccount.getUsername();
+
         this.password = req.getParameter("password");
         this.confirmPassword = req.getParameter("confirmPassword");
         this.firstname = req.getParameter("firstname");
@@ -58,92 +59,11 @@ public class EditAccountServlet extends HttpServlet {
         this.listOption = Boolean.parseBoolean(req.getParameter("listOption"));
         this.bannerOption = Boolean.parseBoolean(req.getParameter("bannerOption"));
 
-        if (!validateRegistration()){
-            req.setAttribute("editAccountMsg", Msg );
-            req.getRequestDispatcher(EDIT_ACCOUNT_FORM).forward(req, resp);
-        }
-        else {
-            Account account = new Account(username,password,email,firstname,lastname,addr1,addr2,city,state
-                    ,zip,country,phone,favouriteCategoryId,languagePreference,listOption,bannerOption);
-            AccountService.updateAccount(account);
-            resp.sendRedirect("mainForm");
-        }
+        Account account = new Account(username,password,email,firstname,lastname,addr1,addr2,city,state
+                ,zip,country,phone,favouriteCategoryId,languagePreference,listOption,bannerOption);
+        AccountService.updateAccount(account);
+        resp.sendRedirect("mainForm");
+
     }
 
-    private boolean validateRegistration() {
-        if (firstname == null || firstname.isEmpty()) {
-            Msg = "First name is required";
-            return false;
-        }
-        if (lastname == null || lastname.isEmpty()) {
-            Msg = "Last name is required";
-            return false;
-        }
-        if (email == null || email.isEmpty()) {
-            Msg = "Email is required";
-            return false;
-        }
-        if (!isValidEmail(email)) {
-            Msg = "Invalid email format";
-            return false;
-        }
-        if (password == null || password.isEmpty()) {
-            Msg = "Password is required";
-            return false;
-        }
-        if (confirmPassword == null || !confirmPassword.equals(password)) {
-            Msg = "Confirm password does not match";
-        }
-        if (!containsBothLettersAndNumbers(password)) {
-            Msg = "Password should have at least one letter and one number";
-            return false;
-        }
-        if (addr1 == null || addr1.isEmpty()) {
-            Msg = "Address Line 1 is required";
-            return false;
-        }
-        if (city == null || city.isEmpty()) {
-            Msg = "City is required";
-            return false;
-        }
-        if (state == null || state.isEmpty()) {
-            Msg = "State is required";
-            return false;
-        }
-        if (zip == null || zip.isEmpty()) {
-            Msg = "Zip Code is required";
-            return false;
-        }
-        if (country == null || country.isEmpty()) {
-            Msg = "Country is required";
-            return false;
-        }
-        if (phone == null || phone.isEmpty()) {
-            Msg = "Phone number is required";
-            return false;
-        }
-        return true;
-    }
-
-    private boolean isValidEmail(String email) {
-        String emailRegex = "^[A-Za-z0-9+_.-]+@(.+)$";
-        return email.matches(emailRegex);
-    }
-
-    private boolean containsBothLettersAndNumbers(String s) {
-        boolean hasLetter = false;
-        boolean hasDigit = false;
-
-        for (char c : s.toCharArray()) {
-            if (Character.isLetter(c)) {
-                hasLetter = true;
-            } else if (Character.isDigit(c)) {
-                hasDigit = true;
-            }
-            if (hasLetter && hasDigit) {
-                return true;
-            }
-        }
-        return false;
-    }
 }
