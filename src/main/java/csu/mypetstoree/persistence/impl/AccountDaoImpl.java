@@ -56,6 +56,7 @@ public class AccountDaoImpl implements AccountDao {
              ResultSet resultSet = statement.executeQuery();
              if(resultSet.next()){
                  ac = new Account();
+                 ac.setPassword(account.getPassword());
                  ac.setUsername(resultSet.getString("username"));
                  ac.setEmail(resultSet.getString("email"));
                  ac.setFirstName(resultSet.getString("firstname"));
@@ -220,6 +221,29 @@ public class AccountDaoImpl implements AccountDao {
     };
 
 
+    @Override
+    public boolean isMailExist(String mail) {
+
+        boolean isExist = false;
+        try {
+            Connection connection = DBUtil.getConnection();
+            PreparedStatement statement = connection.prepareStatement(IS_MAIL_EXIST);
+            statement.setString(1, mail);
+            ResultSet resultSet = statement.executeQuery();
+            if(resultSet.next()){
+                System.out.println("mail exist");
+                isExist = true;
+            }else {
+                System.out.println("mail does not exist");
+            }
+            DBUtil.closePreparedStatement(statement);
+            DBUtil.closeConnection(connection);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return isExist;
+    };
+
     private static final String UPDATE_SIGN_ON = "UPDATE SIGNON SET PASSWORD = ?\n" +
             "    WHERE USERNAME = ?";
 
@@ -303,4 +327,8 @@ public class AccountDaoImpl implements AccountDao {
             "      (?, ?, ?, ?, ?,  ?, ?, ?, ?, ?, ?, ?)";
 
 
+    private static final String IS_MAIL_EXIST = "SELECT\n" +
+            "          EMAIL\n" +
+            "    FROM ACCOUNT\n" +
+            "    WHERE EMAIL = ?\n";
 }
