@@ -145,13 +145,14 @@
                 <th>Price</th>
                 <th>Total Cost</th>
             </tr>
+<%--            这里有小问题--%>
             <c:if test="${sessionScope.cart.numberOfItems == 0}">
                 <tr>
                     <td colspan="5"><b>Your cartItems is empty.</b></td>
                 </tr>
             </c:if>
             <c:forEach var="cartItem"
-                    items="${sessionScope.cart.cartItems}">
+                    items="${sessionScope.cartItems}">
                 <tr>
                     <td>${cartItem.item.itemId}</td>
                     <td>${cartItem.item.attribute1} ${cartItem.item.product.name}</td>
@@ -161,12 +162,11 @@
                 </tr>
             </c:forEach>
             <tr>
-                <td colspan=5>Total:$${sessionScope.cart.getSubTotal()}</td>
+                <td colspan=5>Total:$${sessionScope.ChooseLastTotal}</td>
             </tr>
         </table>
 
     </form>
 
 </div>
-
 <%@ include file="../common/bottom.jsp"%>
