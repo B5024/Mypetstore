@@ -13,11 +13,10 @@
             </c:if>
         </div>
     </div>
-<script src="js/productAuto.js"></script>
+
 
 <script src="https://cdn.staticfile.net/jquery/1.10.2/jquery.min.js"></script>
-<script src="./js/cart.js?version=0.0.2"></script>
-<script src="./js/remote_Item.js?version=0.0.1"></script>
+<script src="js/productAuto.js"></script>
 </body>
 
 </html>
