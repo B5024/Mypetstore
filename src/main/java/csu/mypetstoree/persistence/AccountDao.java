@@ -3,8 +3,21 @@ package csu.mypetstoree.persistence;
 import csu.mypetstoree.domain.Account;
 
 public interface AccountDao {
-    static Account getAccountByUsernameAndPassword(Account account) {
-        return account;
-    }
-}
+    Account getAccountByUsername(String username);
 
+    Account getAccountByUsernameAndPassword(Account account);
+
+    void insertAccount(Account account);
+
+    void insertProfile(Account account);
+
+    void insertSignon(Account account);
+
+    void updateAccount(Account account);
+
+    void updateProfile(Account account);
+
+    void updateSignon(Account account);
+
+    boolean isMailExist(String mail);
+}
