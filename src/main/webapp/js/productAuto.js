@@ -1,10 +1,11 @@
+console.log("link productAuto.js");
 $(function(){
     $('#keyword').on('keyup',function(){
         var keyword = $(this).val();
         if(keyword !=='' && keyword!==null && keyword.length !==0){
             $.ajax({
                 type    :   'GET',
-                url     :   'http://localhost:8080/Mypetstore_war_exploded/productAuto?keyword='+keyword,
+                url     :   'productAuto?keyword='+keyword,
                 success :   function(data){
                     console.log(data);
                     var productListHTML='';
@@ -35,7 +36,7 @@ $(function(){
         console.log(productId);
         $('#productAutoComplete').hide();
         $('#keyword').val('');
-        window.location.href='http://localhost:8080/Mypetstore_war_exploded/productForm?productId='+productId;
+        window.location.href='productForm?productId='+productId;
     });
 
     $('#productAutoComplete').on('mouseleave',function (){
